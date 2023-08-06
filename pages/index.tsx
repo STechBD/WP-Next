@@ -10,7 +10,7 @@ function Home()
 	return (
 		<>
 			<Head>
-				<title>Homepage - WP-React</title>
+				<title>Homepage - WP-Next</title>
 			</Head>
 			<main className="flex min-h-screen flex-col items-center justify-between p-24">
 				<div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
