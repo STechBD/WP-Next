@@ -18,7 +18,7 @@ function FeaturedImage({ id }: any) {
 	if (!data) {
 		return <div>Image loading...</div>;
 	} else {
-		return <Image src={ data.media_detail.sizes.large.source_url } alt={ data.title.rendered } height={ 100 } width={ 100 }/>;
+		return <Image src={ data.source_url } alt={ data.title.rendered } height={ 100 } width={ 100 }/>;
 	}
 }
 
@@ -26,15 +26,23 @@ export default function Articles() {
 	const {data, error} = useSWR('https://blog.shikkhaweb.com/wp-json/wp/v2/posts', fetcher);
 
 	if (error) {
-		return (<main className="flex min-h-screen flex-col items-center justify-between p-24">
-				<div className="container mx-auto p-4">Error fetching data</div>
+		return (<>
+			<Head>Error</Head>
+			<main className="flex min-h-screen flex-col items-center justify-between p-24">
+				<h1 className="text-6xl font-bold text-center text-gray-800 dark:text-white">Error</h1>
+				<div className="container mx-auto p-4">Error details: { error }</div>
 			</main>
+		</>
 		);
 	}
 	if (!data) {
-		return (<main className="flex min-h-screen flex-col items-center justify-between p-24">
-				<div>Loading...</div>
-			</main>
+		return (<>
+				<Head>Loading</Head>
+				<main className="flex min-h-screen flex-col items-center justify-between p-24">
+					<h1 className="text-6xl font-bold text-center text-gray-800 dark:text-white">Loading</h1>
+					<div className="container mx-auto p-4">Loading website....</div>
+				</main>
+			</>
 		);
 	}
 	if (data) console.log(data);
@@ -47,13 +55,6 @@ export default function Articles() {
 			</Head>
 			<main className="flex min-h-screen flex-col items-center justify-between p-24">
 				<h1 className="text-6xl font-bold text-center text-gray-800 dark:text-white">Articles</h1>
-				{/*<div className="container mx-auto p-4">
-					<textarea
-						className="w-full h-24 p-4 text-gray-700 border rounded-lg focus:outline-none focus:border-blue-500"
-						placeholder="Write something...">
-						{JSON.stringify(data)}
-					</textarea>
-				</div>*/}
 				<div className="container mx-auto p-4">
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 						{data.map((post: any) => (
