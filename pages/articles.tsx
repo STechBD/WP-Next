@@ -1,3 +1,19 @@
+/**
+ * Project: WordPress-Next
+ * Description: WordPress-Next is a simple and lightweight frontend framework for WordPress based on Next.js.
+ * Version: 1.0.0
+ * Version Code: 1
+ * Since: 1.0.0
+ * Author: Md. Ashraful Alam Shemul
+ * Email: ceo@stechbd.net
+ * Website: https://www.stechbd.net/project/WP-Next/
+ * Developer: S Technologies
+ * Homepage: https://www.stechbd.net
+ * Contact: product@stechbd.net
+ * Created: April 17, 2023
+ * Updated: August 6, 2023
+ */
+
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -7,12 +23,24 @@ import useSWR from 'swr';
 const inter = Inter({subsets: ['latin']});
 
 
-const fetcher = async (url: RequestInfo | URL) => {
+/**
+ * Fetcher method to fetch data using SWR technology.
+ * @param url
+ * @return {Promise<any>}
+ * @since 1.0.0
+ */
+const fetcher = async (url: RequestInfo | URL): Promise<any> => {
 	const response = await fetch(url);
 	return await response.json();
 };
 
-function FeaturedImage({ id }: any) {
+/**
+ * FeaturedImage method to show featured image.
+ * @param id
+ * @return {JSX.Element}
+ * @since 1.0.0
+ */
+function FeaturedImage({ id }: any): JSX.Element {
 	const {data, error} = useSWR('https://blog.shikkhaweb.com/wp-json/wp/v2/media/' + id, fetcher);
 
 	if (!data) {
@@ -22,7 +50,12 @@ function FeaturedImage({ id }: any) {
 	}
 }
 
-export default function Articles() {
+/**
+ * Articles method to show all articles.
+ * @return {JSX.Element}
+ * @since 1.0.0
+ */
+export default function Articles(): JSX.Element {
 	const {data, error} = useSWR('https://blog.shikkhaweb.com/wp-json/wp/v2/posts', fetcher);
 
 	if (error) {
@@ -47,7 +80,6 @@ export default function Articles() {
 	}
 	if (data) console.log(data);
 
-	// @ts-ignore
 	return (
 		<>
 			<Head>
