@@ -87,6 +87,8 @@ export default function Articles(): JSX.Element {
 			</Head>
 			<main className="flex min-h-screen flex-col items-center justify-between p-24">
 				<h1 className="text-6xl font-bold text-center text-gray-800 dark:text-white">Articles</h1>
+				<div>Articles: { data.length }</div>
+				<div><Link href={'/'}>Home</Link></div>
 				<div className="container mx-auto p-4">
 					<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 						{data.map((post: any) => (
