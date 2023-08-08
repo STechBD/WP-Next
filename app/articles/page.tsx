@@ -55,7 +55,7 @@ function FeaturedImage({ id }: any): JSX.Element {
  * @return {JSX.Element}
  * @since 1.0.0
  */
-export default function Articles(): JSX.Element {
+export default function Page(): JSX.Element {
 	const {data, error} = useSWR('https://blog.shikkhaweb.com/wp-json/wp/v2/posts', fetcher);
 
 	if (error) {
