@@ -38,6 +38,8 @@ export default function Content({ slug, onTitleReceived }: any): JSX.Element {
 		revalidateOnReconnect: false
 	});
 
+	const [receivedTitle, setReceivedTitle] = useState<string|null>('');
+
 	if (error) {
 		return (<main className="flex min-h-screen flex-col justify-between p-24">
 			<div className="container mx-auto p-4">
@@ -56,9 +58,7 @@ export default function Content({ slug, onTitleReceived }: any): JSX.Element {
 		</main>);
 	}
 
-	useEffect(() => {
-		onTitleReceived(data[0].title.rendered);
-	}, []);
+	onTitleReceived(data[0].title.rendered);
 
 	return (<>
 		<main className="flex min-h-screen flex-col justify-between p-24">
