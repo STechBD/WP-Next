@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 /**
  * Header method to show header.
- * @return {JSX.Element}
+ * @return { JSX.Element }
  * @since 1.0.0
  */
 

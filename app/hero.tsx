@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 /**
  * Hero section with responsive image.
- * @return {JSX.Element}
+ * @return { JSX.Element }
  * @since 1.0.0
  */
 export default function Hero(): JSX.Element {
@@ -13,7 +13,8 @@ export default function Hero(): JSX.Element {
 				<div className="flex flex-col w-full lg:w-1/2 justify-center items-start p-8">
 					<h1 className="text-3xl md:text-5xl p-4">Lorem ipsum dolor sit amet consectetur adipisicing elit.
 						Quisquam, voluptatibus?</h1>
-					<p className="text-xl md:text-2xl p-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+					<p className="text-xl md:text-2xl p-4">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Quisquam
 						voluptatibus, voluptas, quibusdam, voluptates similique dolorum doloremque fugit quae
 						asperiores quisquam, voluptatibus, voluptas, quibusdam, voluptates similique dolorum
 						doloremque fugit quae asperiores.</p>
@@ -26,9 +27,9 @@ export default function Hero(): JSX.Element {
 					<Image
 						src="/next.svg"
 						alt="Picture of the author"
-						width={500}
-						height={500}
-						loading={"lazy"}
+						width={ 500 }
+						height={ 500 }
+						loading={ "lazy" }
 					/>
 				</div>
 			</div>

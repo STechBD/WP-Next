@@ -1,4 +1,4 @@
-import type {Metadata} from 'next'
+import type { Metadata } from 'next'
 import Content from '@/app/content'
 import Hero from "@/app/hero";
 import React from "react";
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
  * @param text
  * @constructor
  */
-function Text({text}: any): JSX.Element {
+function Text( { text }: any ): JSX.Element {
 	return (<div className="container mx-auto p-4">
-		{text}
+		{ text }
 	</div>)
 }
 
