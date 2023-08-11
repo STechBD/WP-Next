@@ -1,8 +1,6 @@
 'use client'
 
-import { useEffect, useState} from 'react';
-import Image from 'next/image'
-import Link from 'next/link'
+import { SetStateAction, useEffect, useState } from 'react';
 import Article from "@/app/article";
 
 
@@ -28,10 +26,10 @@ const fetcher = async (url: RequestInfo | URL): Promise<any> => {
  * @since 1.0.0
  */
 export default function Content(): JSX.Element {
-	const date = new Date();
-	const hours = date.getHours();
-	const minutes = date.getMinutes();
-	const seconds = date.getSeconds();
+	const date: Date = new Date();
+	const hours: number = date.getHours();
+	const minutes: number = date.getMinutes();
+	const seconds: number = date.getSeconds();
 
 	const [ data, setData ] = useState<any>([]);
 	const [ loading, setLoading ] = useState<boolean>(true);
@@ -39,11 +37,11 @@ export default function Content(): JSX.Element {
 
 	useEffect(() => {
 		fetcher('https://blog.shikkhaweb.com/wp-json/wp/v2/posts/')
-			.then((jsonData) => {
+			.then((jsonData: any) => {
 				setData(jsonData);
 				setLoading(false);
 			})
-			.catch((error) => {
+			.catch((error: { message: SetStateAction<string | null>; }) => {
 				setError(error.message);
 				console.log(error);
 			});

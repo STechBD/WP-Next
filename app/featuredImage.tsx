@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useState} from 'react';
+import {SetStateAction, useEffect, useState} from 'react';
 import Image from 'next/image'
 
 /**
@@ -41,12 +41,20 @@ export default function FeaturedImage({id}: any): JSX.Element {
 	}, []);
 
 	if (error) {
-		return (<div className="flex min-h-screen flex-col justify-between p-24">Error: { error }</div>)
+		return (<div className="flex min-h-screen flex-col justify-between p-24">Error: {error}</div>)
 	}
 
 	if (loading) {
 		return (<div>Image loading...</div>)
 	}
 
-	return <Image src={ data.source_url } alt={ data.title.rendered } height={ 100 } width={ 100 } />
+	return (
+		<Image
+			key={data.id}
+			src={data.media_details.sizes.medium.source_url}
+			alt={data.title.rendered}
+			width={data.media_details.sizes.full.width}
+			height={data.media_details.sizes.full.height}
+			loading={"lazy"}
+		/>);
 }
