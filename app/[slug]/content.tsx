@@ -38,8 +38,6 @@ export default function Content({ slug, onTitleReceived }: any): JSX.Element {
 		revalidateOnReconnect: false
 	});
 
-	const [receivedTitle, setReceivedTitle] = useState<string|null>('');
-
 	if (error) {
 		return (<main className="flex min-h-screen flex-col justify-between p-24">
 			<div className="container mx-auto p-4">
@@ -67,7 +65,7 @@ export default function Content({ slug, onTitleReceived }: any): JSX.Element {
 				<p className="text-center text-gray-500 dark:text-gray-400">Time: { hours + ':' + minutes + ':' + seconds }</p>
 			</div>
 			<div
-				className="mb-32 grid text-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
+				className="mx-32 mb-32">
 				<div dangerouslySetInnerHTML={ { __html: data[0].content.rendered } }/>
 			</div>
 		</main>
