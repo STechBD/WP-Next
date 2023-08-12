@@ -7,7 +7,7 @@ import FeaturedImage from "@/app/featuredImage"
  * @return { JSX.Element }
  * @since 1.0.0
  */
-export default function Article( { post }: any ): JSX.Element {
+export default function Article({ post }: any): JSX.Element {
 	const parser: DOMParser = new DOMParser();
 	const htmlDoc: Document = parser.parseFromString(post.excerpt.rendered, 'text/html');
 	let excerpt: string = htmlDoc.body.textContent || '';

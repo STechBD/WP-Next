@@ -10,7 +10,7 @@ import Article from '@/app/article'
  * @return { Promise<any> }
  * @since 1.0.0
  */
-const fetcher = async ( url: RequestInfo | URL ): Promise<any> => {
+const fetcher = async (url: RequestInfo | URL): Promise<any> => {
 	try {
 		const response: Response = await fetch(url);
 		return await response.json();
@@ -62,7 +62,7 @@ export default function Content(): JSX.Element {
 			</div>
 			<div
 				className="mb-32 grid text-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
-				{ data.map(( post: any ) => (
+				{ data.map((post: any) => (
 					<Article post={ post }/>
 				)) }
 			</div>

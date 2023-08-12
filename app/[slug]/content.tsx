@@ -8,7 +8,7 @@ import FeaturedImage from "@/app/[slug]/featuredImage";
  * @return { Promise<any> }
  * @since 1.0.0
  */
-const fetcher = async ( url: RequestInfo | URL ): Promise<any> => {
+const fetcher = async (url: RequestInfo | URL): Promise<any> => {
 	try {
 		const response: Response = await fetch(url);
 		return await response.json();
