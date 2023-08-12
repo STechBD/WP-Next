@@ -22,7 +22,7 @@ const metadata: Metadata = {
  * @constructor
  */
 export default function Page({ params }: { params: { slug: string } }) {
-	const [postTitle, setPostTitle] = useState<string>('Loading ...');
+	const [ postTitle, setPostTitle ] = useState<string>('Loading ...');
 
 	const changeTitle = (title: string) => {
 		setPostTitle(title);
