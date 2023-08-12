@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Content from '@/app/content'
-import Hero from "@/app/hero";
-import React from "react";
+import Hero from '@/app/hero'
 
 
 /**

@@ -1,10 +1,6 @@
-'use client'
-
-import { useEffect, useState } from 'react'
 import useSWR from 'swr'
+import FeaturedImage from "@/app/[slug]/featuredImage";
 
-
-export let pageTitle: any;
 
 /**
  * Fetcher method to fetch data using SWR technology.
@@ -39,12 +35,14 @@ export default function Content({ slug, onTitleReceived }: any): JSX.Element {
 	});
 
 	if (error) {
-		return (<main className="flex min-h-screen flex-col justify-between p-24">
-			<div className="container mx-auto p-4">
-				<h1 className="text-6xl font-bold text-center text-gray-800 dark:text-white">Error</h1>
-				<p className="text-center text-gray-500 dark:text-gray-400">Error: { error }</p>
-			</div>
-		</main>);
+		return (
+			<main className="flex min-h-screen flex-col justify-between p-24">
+				<div className="container mx-auto p-4">
+					<h1 className="text-6xl font-bold text-center text-gray-800 dark:text-white">Error</h1>
+					<p className="text-center text-gray-500 dark:text-gray-400">Error: { error }</p>
+				</div>
+			</main>
+		);
 	}
 
 	if (isLoading) {
@@ -58,8 +56,11 @@ export default function Content({ slug, onTitleReceived }: any): JSX.Element {
 
 	onTitleReceived(data[0].title.rendered);
 
-	return (<>
+	return (
 		<main className="flex min-h-screen flex-col justify-between p-24">
+			<div className="container mx-auto p-4">
+				<FeaturedImage id={ data[0].featured_media }/>
+			</div>
 			<div className="container mx-auto p-4">
 				<h1 className="text-6xl font-bold text-center text-gray-800 dark:text-white">{ data[0].title.rendered }</h1>
 				<p className="text-center text-gray-500 dark:text-gray-400">Time: { hours + ':' + minutes + ':' + seconds }</p>
@@ -69,5 +70,5 @@ export default function Content({ slug, onTitleReceived }: any): JSX.Element {
 				<div dangerouslySetInnerHTML={ { __html: data[0].content.rendered } }/>
 			</div>
 		</main>
-	</>);
+	);
 };

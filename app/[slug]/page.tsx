@@ -27,6 +27,8 @@ export default function Page({ params }: { params: { slug: string } }) {
 	const changeTitle = (title: string) => {
 		setPostTitle(title);
 		console.log('Found from child: ' + title);
+
+		document.title = title;
 	};
 
 	return <Content slug={ params.slug } onTitleReceived={ changeTitle }/>;

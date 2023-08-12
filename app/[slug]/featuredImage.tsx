@@ -23,7 +23,6 @@ const fetcher = async ( url: RequestInfo | URL ): Promise<any> => {
  * @since 1.0.0
  */
 export default function FeaturedImage( { id }: any ): JSX.Element {
-
 	const { data, error, isLoading } = useSWR('https://blog.shikkhaweb.com/wp-json/wp/v2/media/' + id + '/', fetcher, {
 		revalidateIfStale: false,
 		revalidateOnFocus: false,
@@ -41,7 +40,7 @@ export default function FeaturedImage( { id }: any ): JSX.Element {
 	return (
 		<Image
 			key={ data.id }
-			src={ data.media_details.sizes.medium.source_url }
+			src={ data.media_details.sizes.large.source_url }
 			alt={ data.title.rendered }
 			width={ data.media_details.sizes.full.width }
 			height={ data.media_details.sizes.full.height }
