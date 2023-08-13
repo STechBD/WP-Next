@@ -1,5 +1,5 @@
 import useSWR from 'swr'
-import FeaturedImage from "@/app/[slug]/featuredImage";
+import FeaturedImage from '@/app/[slug]/featuredImage'
 
 
 /**

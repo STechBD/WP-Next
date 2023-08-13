@@ -6,7 +6,7 @@ import Content from '@/app/[slug]/content'
 
 
 /**
- * Metadata component to change the title.
+ * Metadata object to change the title.
  * @param title
  * @return { JSX.Element }
  * @since 1.0.0
@@ -28,7 +28,7 @@ export default function Page({ params }: { params: { slug: string } }) {
 		setPostTitle(title);
 		console.log('Found from child: ' + title);
 
-		document.title = title;
+		metadata.title = title;
 	};
 
 	return <Content slug={ params.slug } onTitleReceived={ changeTitle }/>;
