@@ -1,7 +1,4 @@
-'use client'
-
 import type { Metadata } from 'next'
-import { useState } from 'react';
 import Content from '@/app/[slug]/content'
 
 
@@ -11,10 +8,17 @@ import Content from '@/app/[slug]/content'
  * @return { JSX.Element }
  * @since 1.0.0
  */
-const metadata: Metadata = {
-	title: 'Loading ...',
-	description: '...',
-};
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+	// read route params
+	const slug = params.slug
+
+	// fetch data
+	const data = await fetch('https://blog.shikkhaweb.com/wp-json/wp/v2/posts?slug=' + slug).then((res) => res.json())
+
+	return {
+		title: data[0].title.rendered,
+	}
+}
 
 /**
  * Page method to show the article content.
@@ -22,14 +26,18 @@ const metadata: Metadata = {
  * @constructor
  */
 export default function Page({ params }: { params: { slug: string } }) {
-	const [ postTitle, setPostTitle ] = useState<string>('Loading ...');
 
-	const changeTitle = (title: string) => {
-		setPostTitle(title);
-		console.log('Found from child: ' + title);
+	return (<>
+		<main className="grid grid-cols-5">
+			<div>
 
-		metadata.title = title;
-	};
+			</div>
+			<div className="col-span-3">
+				<Content slug={ params.slug }/>
+			</div>
+			<div>
 
-	return <Content slug={ params.slug } onTitleReceived={ changeTitle }/>;
-};
+			</div>
+		</main>
+	</>)
+}

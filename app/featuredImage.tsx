@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import useSWR from "swr";
+import useSWR from "swr"
 
 /**
  * Fetcher method to fetch data using SWR technology.
@@ -12,9 +12,9 @@ const fetcher = async (url: RequestInfo | URL): Promise<any> => {
 		const response: Response = await fetch(url);
 		return await response.json();
 	} catch (error) {
-		throw new Error('Error fetching data');
+		throw new Error('Error fetching data')
 	}
-};
+}
 
 /**
  * FeaturedImage method to show featured image.
@@ -46,5 +46,5 @@ export default function FeaturedImage({ id }: any): JSX.Element {
 			width={ data.media_details.sizes.full.width }
 			height={ data.media_details.sizes.full.height }
 			loading={ "lazy" }
-		/>);
+		/>)
 }

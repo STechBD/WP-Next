@@ -11,17 +11,6 @@ import Hero from '@/app/hero'
 export const metadata: Metadata = {
 	title: 'Welcome',
 	description: '...',
-};
-
-/**
- * Text method to print text.
- * @param text
- * @constructor
- */
-function Text({ text }: any): JSX.Element {
-	return (<div className="container mx-auto p-4">
-		{ text }
-	</div>)
 }
 
 /**
@@ -33,5 +22,5 @@ export default function Page(): JSX.Element {
 	return (<>
 		<Hero/>
 		<Content/>
-	</>);
+	</>)
 }

@@ -1,3 +1,5 @@
+'use client'
+
 import useSWR from 'swr'
 import FeaturedImage from '@/app/[slug]/featuredImage'
 
@@ -15,18 +17,18 @@ const fetcher = async (url: RequestInfo | URL): Promise<any> => {
 	} catch (error) {
 		throw new Error('Error fetching data');
 	}
-};
+}
 
 /**
  * Content method to load all articles.
  * @return { JSX.Element }
  * @since 1.0.0
  */
-export default function Content({ slug, onTitleReceived }: any): JSX.Element {
-	const date: Date = new Date();
-	const hours: number = date.getHours();
-	const minutes: number = date.getMinutes();
-	const seconds: number = date.getSeconds();
+export default function Content({ slug }: any): JSX.Element {
+	const date: Date = new Date()
+	const hours: number = date.getHours()
+	const minutes: number = date.getMinutes()
+	const seconds: number = date.getSeconds()
 
 	const { data, error, isLoading } = useSWR('https://blog.shikkhaweb.com/wp-json/wp/v2/posts?slug=' + slug, fetcher, {
 		revalidateIfStale: false,
@@ -51,24 +53,63 @@ export default function Content({ slug, onTitleReceived }: any): JSX.Element {
 				<h1 className="text-6xl font-bold text-center text-gray-800 dark:text-white">Loading</h1>
 				<p className="text-center text-gray-500 dark:text-gray-400">Data is loading .....</p>
 			</div>
-		</main>);
+		</main>)
 	}
 
-	onTitleReceived(data[0].title.rendered);
-
-	return (
-		<main className="flex min-h-screen flex-col justify-between p-24">
-			<div className="container mx-auto p-4">
+	return (<>
+		<div className="grid grid-cols-1 justify-center max-w-[700px]">
+			<div className="vc_column tdi_62  wpb_column vc_column_container tdc-column td-pb-span12">
+				<div className="tdb-block-inner td-fix-index">
+					<span><a title="" className="tdb-entry-crumb" href="https://blog.shikkhaweb.com/">Home</a></span>
+					<i className="tdb-bread-sep td-icon-right"></i>
+					<span><a title="View all posts in সাবজেক্ট রিভিউ" className="tdb-entry-crumb" href="https://blog.shikkhaweb.com/category/subject-review/">সাবজেক্ট রিভিউ</a></span>
+					<i className="tdb-bread-sep tdb-bred-no-url-last td-icon-right"></i>
+					<span className="tdb-bred-no-url-last">সমুদ্রবিজ্ঞান (ওশানোগ্রাফি) - সাবজেক্ট রিভিউ</span>
+				</div>
+			</div>
+			{/*<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "BreadcrumbList",
+				"itemListElement": [{
+				"@type": "ListItem",
+				"position": 1,
+				"item": {
+				"@type": "WebSite",
+				"@id": "https://blog.shikkhaweb.com/",
+				"name": "Home"
+			}
+			},{
+				"@type": "ListItem",
+				"position": 2,
+				"item": {
+				"@type": "WebPage",
+				"@id": "https://blog.shikkhaweb.com/category/subject-review/",
+				"name": "সাবজেক্ট রিভিউ"
+			}
+			},{
+				"@type": "ListItem",
+				"position": 3,
+				"item": {
+				"@type": "WebPage",
+				"@id": "",
+				"name": "সমুদ্রবিজ্ঞান (ওশানোগ্রাফি) - সাবজেক্ট রিভিউ"
+			}
+			}    ]
+			}
+			</script>*/ }
+			<div className="container text-center">
 				<FeaturedImage id={ data[0].featured_media }/>
 			</div>
-			<div className="container mx-auto p-4">
-				<h1 className="text-6xl font-bold text-center text-gray-800 dark:text-white">{ data[0].title.rendered }</h1>
+			<div className="container mx-auto">
+				<h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white">{ data[0].title.rendered }</h1>
 				<p className="text-center text-gray-500 dark:text-gray-400">Time: { hours + ':' + minutes + ':' + seconds }</p>
 			</div>
 			<div
-				className="mx-32 mb-32">
+				className="my-20">
 				<div dangerouslySetInnerHTML={ { __html: data[0].content.rendered } }/>
 			</div>
-		</main>
-	);
-};
+		</div>
+
+	</>)
+}
