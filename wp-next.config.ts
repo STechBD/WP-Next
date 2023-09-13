@@ -1,10 +1,7 @@
-import { Config } from 'tailwindcss'
-
 let lightCodeTheme = require('prism-react-renderer/themes/github')
 let darkCodeTheme = require('prism-react-renderer/themes/dracula')
 
-/** @type {import('@wp-next/types').Config} */
-const config: Config = {
+const config: Object = {
 	title: 'My WP-Next Blog',
 	tagline: 'WP-Next is cool',
 	favicon: 'img/favicon.ico',
@@ -107,7 +104,7 @@ const config: Config = {
 				theme: lightCodeTheme,
 				darkTheme: darkCodeTheme,
 			},
-		}),
+		})
 }
 
 module.exports = config
