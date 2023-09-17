@@ -1,7 +1,9 @@
 'use client'
 
 import useSWR from 'swr'
+import Image from 'next/image'
 import Article from '@/app/article'
+import { Progress } from '@nextui-org/react'
 
 
 /**
@@ -30,7 +32,7 @@ export default function Content(): JSX.Element {
 	const minutes: number = date.getMinutes();
 	const seconds: number = date.getSeconds();
 
-	const { data, error, isLoading } = useSWR('https://blog.shikkhaweb.com/wp-json/wp/v2/posts/', fetcher, {
+	const { data, error, isLoading } = useSWR('http://localhost:3000/data.json'/*'https://blog.shikkhaweb.com/wp-json/wp/v2/posts/'*/, fetcher, {
 		revalidateIfStale: false,
 		revalidateOnFocus: false,
 		revalidateOnReconnect: false
@@ -42,22 +44,32 @@ export default function Content(): JSX.Element {
 				<h1 className="text-6xl font-bold text-center text-gray-800 dark:text-white">Error</h1>
 				<p className="text-center text-gray-500 dark:text-gray-400">Error: { error }</p>
 			</div>
-		</main>);
+		</main>)
 	}
 
 	if (isLoading) {
-		return (<main className="flex min-h-screen flex-col justify-between p-24">
-			<div className="container mx-auto p-4">
-				<h1 className="text-6xl font-bold text-center text-gray-800 dark:text-white">Loading</h1>
-				<p className="text-center text-gray-500 dark:text-gray-400">Data is loading .....</p>
-			</div>
-		</main>);
+		return (
+			<main className="flex min-h-screen flex-col justify-between p-24">
+				<div className="container mx-auto p-4">
+					<h1 className="text-6xl font-bold text-center text-gray-800 dark:text-white">Loading</h1>
+					<div className="flex h-full justify-center">
+						<Progress
+							size="sm"
+							isIndeterminate
+							aria-label="Loading ..."
+							className="w-full mt-4"
+						/>
+					</div>
+				</div>
+			</main>
+		)
 	}
 
-	return (<>
+	return (
 		<main className="flex min-h-screen flex-col justify-between p-24">
 			<div className="container mx-auto p-4">
-				<h1 className="text-6xl font-bold text-center text-gray-800 dark:text-white">Welcome</h1>
+				<h1 className="text-5xl font-bold text-center text-gray-800 dark:text-white"><strong>Explore</strong>
+				</h1>
 				<p className="text-center text-gray-500 dark:text-gray-400">Time: { hours + ':' + minutes + ':' + seconds }</p>
 			</div>
 			<div
@@ -67,5 +79,5 @@ export default function Content(): JSX.Element {
 				)) }
 			</div>
 		</main>
-	</>);
-};
+	)
+}

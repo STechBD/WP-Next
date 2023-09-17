@@ -46,5 +46,7 @@ export default function FeaturedImage({ id }: any): JSX.Element {
 			width={ data.media_details.sizes.full.width }
 			height={ data.media_details.sizes.full.height }
 			loading={ "lazy" }
-		/>)
+			className="rounded-tl-xl rounded-tr-xl"
+		/>
+	)
 }

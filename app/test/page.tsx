@@ -3,247 +3,206 @@ import Image from 'next/image'
 
 export default function Page(): JSX.Element {
 	return (
-		<header className="bg-white">
-			<nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-				<div className="flex lg:flex-1">
-					<a href="#" className="-m-1.5 p-1.5">
-						<span className="sr-only">Your Company</span>
-						<Image className="h-8 w-auto"
-						       src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt=""
-						       height={ 100 } width={ 100 }/>
+		<main>
+			<div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+
+				<div className="grid lg:grid-cols-2 gap-6">
+
+					<a className="group relative block" href="#">
+						<div
+							className="flex-shrink-0 relative w-full rounded-xl overflow-hidden h-[350px] before:absolute before:inset-x-0 before:w-full before:h-full before:bg-gradient-to-t before:from-gray-900/[.7] before:z-[1]">
+							<Image className="w-full h-full absolute top-0 left-0 object-cover"
+							       src="https://images.unsplash.com/photo-1669828230990-9b8583a877ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1062&q=80"
+							       height={ 100 } width={ 100 } alt="Image Description"/>
+						</div>
+
+						<div className="absolute top-0 inset-x-0 z-10">
+							<div className="p-4 flex flex-col h-full sm:p-6">
+
+								<div className="flex items-center">
+									<div className="flex-shrink-0">
+										<Image className="h-[2.875rem] w-[2.875rem] border-2 border-white rounded-full"
+										       src="https://images.unsplash.com/photo-1669837401587-f9a4cfe3126e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
+										       height={ 100 } width={ 100 } alt="Image Description"/>
+									</div>
+									<div className="ml-2.5 sm:ml-4">
+										<h4 className="font-semibold text-white">
+											Gloria
+										</h4>
+										<p className="text-xs text-white/[.8]">
+											Jan 09, 2021
+										</p>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+						<div className="absolute bottom-0 inset-x-0 z-10">
+							<div className="flex flex-col h-full p-4 sm:p-6">
+								<h3 className="text-lg sm:text-3xl font-semibold text-white group-hover:text-white/[.8]">
+									Facebook is creating a news section in Watch to feature breaking news
+								</h3>
+								<p className="mt-2 text-white/[.8]">
+									Facebook launched the Watch platform in August
+								</p>
+							</div>
+						</div>
+					</a>
+
+
+					<a className="group relative block" href="#">
+						<div
+							className="flex-shrink-0 relative w-full rounded-xl overflow-hidden h-[350px] before:absolute before:inset-x-0 before:w-full before:h-full before:bg-gradient-to-t before:from-gray-900/[.7] before:z-[1]">
+							<Image className="w-full h-[350px] absolute top-0 left-0 object-cover"
+							       src="https://images.unsplash.com/photo-1611625618313-68b87aaa0626?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80"
+							       height={ 100 } width={ 100 } alt="Image Description"/>
+						</div>
+
+						<div className="absolute top-0 inset-x-0 z-10">
+							<div className="p-4 flex flex-col h-full sm:p-6">
+
+								<div className="flex items-center">
+									<div className="flex-shrink-0">
+										<Image className="h-[2.875rem] w-[2.875rem] border-2 border-white rounded-full"
+										       src="https://images.unsplash.com/photo-1669837401587-f9a4cfe3126e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
+										       height={ 100 } width={ 100 } alt="Image Description"/>
+									</div>
+									<div className="ml-2.5 sm:ml-4">
+										<h4 className="font-semibold text-white">
+											Gloria
+										</h4>
+										<p className="text-xs text-white/[.8]">
+											May 30, 2021
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div className="absolute bottom-0 inset-x-0 z-10">
+							<div className="flex flex-col h-full p-4 sm:p-6">
+								<h3 className="text-lg sm:text-3xl font-semibold text-white group-hover:text-white/[.8]">
+									What CFR (Conversations, Feedback, Recognition) really is about
+								</h3>
+								<p className="mt-2 text-white/[.8]">
+									For a lot of people these days, Measure What Matters.
+								</p>
+							</div>
+						</div>
 					</a>
 				</div>
-				<div className="flex lg:hidden">
-					<button type="button"
-					        className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
-						<span className="sr-only">Open main menu</span>
-						<svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-						     stroke="currentColor" aria-hidden="true">
-							<path stroke-linecap="round" stroke-linejoin="round"
-							      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
-						</svg>
-					</button>
-				</div>
-				<div className="hidden lg:flex lg:gap-x-12">
-					<div className="relative">
-						<button type="button"
-						        className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
-						        aria-expanded="false">
-							Product
-							<svg className="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor"
-							     aria-hidden="true">
-								<path fill-rule="evenodd"
-								      d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-								      clip-rule="evenodd"/>
-							</svg>
-						</button>
-
-						<div
-							className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
-							<div className="p-4">
-								<div
-									className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
-									<div
-										className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-										<svg className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" fill="none"
-										     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-										     aria-hidden="true">
-											<path stroke-linecap="round" stroke-linejoin="round"
-											      d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z"/>
-											<path stroke-linecap="round" stroke-linejoin="round"
-											      d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z"/>
-										</svg>
-									</div>
-									<div className="flex-auto">
-										<a href="#" className="block font-semibold text-gray-900">
-											Analytics
-											<span className="absolute inset-0"></span>
-										</a>
-										<p className="mt-1 text-gray-600">Get a better understanding of your traffic</p>
-									</div>
-								</div>
-								<div
-									className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
-									<div
-										className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-										<svg className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" fill="none"
-										     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-										     aria-hidden="true">
-											<path stroke-linecap="round" stroke-linejoin="round"
-											      d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59"/>
-										</svg>
-									</div>
-									<div className="flex-auto">
-										<a href="#" className="block font-semibold text-gray-900">
-											Engagement
-											<span className="absolute inset-0"></span>
-										</a>
-										<p className="mt-1 text-gray-600">Speak directly to your customers</p>
-									</div>
-								</div>
-								<div
-									className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
-									<div
-										className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-										<svg className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" fill="none"
-										     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-										     aria-hidden="true">
-											<path stroke-linecap="round" stroke-linejoin="round"
-											      d="M7.864 4.243A7.5 7.5 0 0119.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 004.5 10.5a7.464 7.464 0 01-1.15 3.993m1.989 3.559A11.209 11.209 0 008.25 10.5a3.75 3.75 0 117.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 01-3.6 9.75m6.633-4.596a18.666 18.666 0 01-2.485 5.33"/>
-										</svg>
-									</div>
-									<div className="flex-auto">
-										<a href="#" className="block font-semibold text-gray-900">
-											Security
-											<span className="absolute inset-0"></span>
-										</a>
-										<p className="mt-1 text-gray-600">Your customers’ data will be safe and
-											secure</p>
-									</div>
-								</div>
-								<div
-									className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
-									<div
-										className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-										<svg className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" fill="none"
-										     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-										     aria-hidden="true">
-											<path stroke-linecap="round" stroke-linejoin="round"
-											      d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 002.25-2.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v2.25A2.25 2.25 0 006 10.5zm0 9.75h2.25A2.25 2.25 0 0010.5 18v-2.25a2.25 2.25 0 00-2.25-2.25H6a2.25 2.25 0 00-2.25 2.25V18A2.25 2.25 0 006 20.25zm9.75-9.75H18a2.25 2.25 0 002.25-2.25V6A2.25 2.25 0 0018 3.75h-2.25A2.25 2.25 0 0013.5 6v2.25a2.25 2.25 0 002.25 2.25z"/>
-										</svg>
-									</div>
-									<div className="flex-auto">
-										<a href="#" className="block font-semibold text-gray-900">
-											Integrations
-											<span className="absolute inset-0"></span>
-										</a>
-										<p className="mt-1 text-gray-600">Connect with third-party tools</p>
-									</div>
-								</div>
-								<div
-									className="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
-									<div
-										className="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-										<svg className="h-6 w-6 text-gray-600 group-hover:text-indigo-600" fill="none"
-										     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-										     aria-hidden="true">
-											<path stroke-linecap="round" stroke-linejoin="round"
-											      d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"/>
-										</svg>
-									</div>
-									<div className="flex-auto">
-										<a href="#" className="block font-semibold text-gray-900">
-											Automations
-											<span className="absolute inset-0"></span>
-										</a>
-										<p className="mt-1 text-gray-600">Build strategic funnels that will convert</p>
-									</div>
-								</div>
-							</div>
-							<div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-								<a href="#"
-								   className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100">
-									<svg className="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20"
-									     fill="currentColor" aria-hidden="true">
-										<path fill-rule="evenodd"
-										      d="M2 10a8 8 0 1116 0 8 8 0 01-16 0zm6.39-2.908a.75.75 0 01.766.027l3.5 2.25a.75.75 0 010 1.262l-3.5 2.25A.75.75 0 018 12.25v-4.5a.75.75 0 01.39-.658z"
-										      clip-rule="evenodd"/>
-									</svg>
-									Watch demo
-								</a>
-								<a href="#"
-								   className="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100">
-									<svg className="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20"
-									     fill="currentColor" aria-hidden="true">
-										<path fill-rule="evenodd"
-										      d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z"
-										      clip-rule="evenodd"/>
-									</svg>
-									Contact sales
-								</a>
-							</div>
-						</div>
-					</div>
-
-					<a href="#" className="text-sm font-semibold leading-6 text-gray-900">Features</a>
-					<a href="#" className="text-sm font-semibold leading-6 text-gray-900">Marketplace</a>
-					<a href="#" className="text-sm font-semibold leading-6 text-gray-900">Company</a>
-				</div>
-				<div className="hidden lg:flex lg:flex-1 lg:justify-end">
-					<a href="#" className="text-sm font-semibold leading-6 text-gray-900">Log in <span
-						aria-hidden="true">&rarr;</span></a>
-				</div>
-			</nav>
-
-			<div className="lg:hidden" role="dialog" aria-modal="true">
-				<div className="fixed inset-0 z-10"></div>
-				<div
-					className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-					<div className="flex items-center justify-between">
-						<a href="#" className="-m-1.5 p-1.5">
-							<span className="sr-only">Your Company</span>
-							<Image className="h-8 w-auto"
-							       src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" height={100} width={100}/>
-						</a>
-						<button type="button" className="-m-2.5 rounded-md p-2.5 text-gray-700">
-							<span className="sr-only">Close menu</span>
-							<svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-							     stroke="currentColor" aria-hidden="true">
-								<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-							</svg>
-						</button>
-					</div>
-					<div className="mt-6 flow-root">
-						<div className="-my-6 divide-y divide-gray-500/10">
-							<div className="space-y-2 py-6">
-								<div className="-mx-3">
-									<button type="button"
-									        className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-									        aria-controls="disclosure-1" aria-expanded="false">
-										Product
-										<svg className="h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor"
-										     aria-hidden="true">
-											<path fill-rule="evenodd"
-											      d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-											      clip-rule="evenodd"/>
-										</svg>
-									</button>
-
-									<div className="mt-2 space-y-2" id="disclosure-1">
-										<a href="#"
-										   className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">Analytics</a>
-										<a href="#"
-										   className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">Engagement</a>
-										<a href="#"
-										   className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">Security</a>
-										<a href="#"
-										   className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">Integrations</a>
-										<a href="#"
-										   className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">Automations</a>
-										<a href="#"
-										   className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">Watch
-											demo</a>
-										<a href="#"
-										   className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">Contact
-											sales</a>
-									</div>
-								</div>
-								<a href="#"
-								   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
-								<a href="#"
-								   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Marketplace</a>
-								<a href="#"
-								   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Company</a>
-							</div>
-							<div className="py-6">
-								<a href="#"
-								   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log
-									in</a>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
-		</header>
-	);
+
+
+			<div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+
+				<div className="max-w-2xl text-center mx-auto mb-10 lg:mb-14">
+					<h2 className="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">Read our latest
+						news</h2>
+					<p className="mt-1 text-gray-600 dark:text-gray-400">We've helped some great companies brand, design
+						and get to market.</p>
+				</div>
+
+
+				<div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 lg:mb-14">
+
+					<a className="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-800"
+					   href="#">
+						<div className="aspect-w-16 aspect-h-9">
+							<Image className="w-full object-cover rounded-t-xl"
+							       src="https://images.unsplash.com/photo-1668869713519-9bcbb0da7171?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=988&q=80"
+							       alt="Image Description" height={ 100 } width={ 100 }/>
+						</div>
+						<div className="p-4 md:p-5">
+							<p className="mt-2 text-xs uppercase text-gray-600 dark:text-gray-400">
+								Product
+							</p>
+							<h3 className="mt-2 text-lg font-medium text-gray-800 group-hover:text-blue-600 dark:text-gray-300 dark:group-hover:text-white">
+								Better is when everything works together
+							</h3>
+						</div>
+					</a>
+
+
+					<a className="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-800"
+					   href="#">
+						<div className="aspect-w-16 aspect-h-9">
+							<Image className="w-full object-cover rounded-t-xl"
+							       src="https://images.unsplash.com/photo-1668584054035-f5ba7d426401?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3465&q=80"
+							       alt="Image Description" height={ 100 } width={ 100 }/>
+						</div>
+						<div className="p-4 md:p-5">
+							<p className="mt-2 text-xs uppercase text-gray-600 dark:text-gray-400">
+								Business
+							</p>
+							<h3 className="mt-2 text-lg font-medium text-gray-800 group-hover:text-blue-600 dark:text-gray-300 dark:group-hover:text-white">
+								What CFR really is about
+							</h3>
+						</div>
+					</a>
+
+
+					<a className="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-800"
+					   href="#">
+						<div className="aspect-w-16 aspect-h-9">
+							<Image className="w-full object-cover rounded-t-xl"
+							       src="https://images.unsplash.com/photo-1668863699009-1e3b4118675d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3387&q=80"
+							       alt="Image Description" height={ 100 } width={ 100 }/>
+						</div>
+						<div className="p-4 md:p-5">
+							<p className="mt-2 text-xs uppercase text-gray-600 dark:text-gray-400">
+								Business
+							</p>
+							<h3 className="mt-2 text-lg font-medium text-gray-800 group-hover:text-blue-600 dark:text-gray-300 dark:group-hover:text-white">
+								Should Product Owners think like entrepreneurs?
+							</h3>
+						</div>
+					</a>
+
+
+					<a className="group flex flex-col bg-white border shadow-sm rounded-xl hover:shadow-md transition dark:bg-slate-900 dark:border-gray-800"
+					   href="#">
+						<div className="aspect-w-16 aspect-h-9">
+							<Image className="w-full object-cover rounded-t-xl"
+							       src="https://images.unsplash.com/photo-1668584054131-d5721c515211?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80"
+							       alt="Image Description" height={ 100 } width={ 100 }/>
+						</div>
+						<div className="p-4 md:p-5">
+							<p className="mt-2 text-xs uppercase text-gray-600 dark:text-gray-400">
+								Facilitate
+							</p>
+							<h3 className="mt-2 text-lg font-medium text-gray-800 group-hover:text-blue-600 dark:text-gray-300 dark:group-hover:text-white">
+								Announcing Front Strategies: Ready-to-use rules
+							</h3>
+						</div>
+					</a>
+
+				</div>
+
+
+				<div className="text-center">
+					<div
+						className="inline-block bg-white border shadow-sm rounded-full dark:bg-slate-900 dark:border-gray-800">
+						<div className="py-3 px-4 flex items-center gap-x-2">
+							<p className="text-gray-600 dark:text-gray-400">
+								Want to read more?
+							</p>
+							<a className="inline-flex items-center gap-x-1.5 text-blue-600 decoration-2 hover:underline font-medium"
+							   href="../docs/index.html">
+								Go here
+								<svg className="w-2.5 h-2.5" width="16" height="16" viewBox="0 0 16 16" fill="none">
+									<path
+										d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
+										stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+								</svg>
+							</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</main>
+	)
 }

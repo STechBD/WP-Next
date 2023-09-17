@@ -8,39 +8,41 @@ import {
 	NavbarBrand,
 	NavbarContent,
 	NavbarItem,
-	NavbarMenu, NavbarMenuItem,
+	NavbarMenu,
+	NavbarMenuItem,
 	NavbarMenuToggle
 } from '@nextui-org/react'
-import Image from "next/image";
+import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 
 /**
- * Header method to show header.
+ * Header method to show the sticky header.
  * @return { JSX.Element }
  * @since 1.0.0
  */
-
 export default function Header(): JSX.Element {
-	const [ isMenuOpen, setIsMenuOpen ] = useState(false);
+	const path: string | null = usePathname()
+	const [ isMenuOpen, setIsMenuOpen ] = useState(false)
 
-	const menuItems = [
-		"Profile",
-		"Dashboard",
-		"Activity",
-		"Analytics",
-		"System",
-		"Deployments",
-		"My Settings",
-		"Team Settings",
-		"Help & Feedback",
-		"Log Out",
+	const menuItems: string[] = [
+		'Profile',
+		'Dashboard',
+		'Activity',
+		'Analytics',
+		'System',
+		'Deployments',
+		'My Settings',
+		'Team Settings',
+		'Help & Feedback',
+		'Log Out',
 	]
 
 	return (
 		<Navbar onMenuOpenChange={ setIsMenuOpen }>
 			<NavbarContent>
 				<NavbarMenuToggle
-					aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+					aria-label={ isMenuOpen ? 'Close menu' : 'Open menu' }
 					className="sm:hidden"
 				/>
 				<NavbarBrand>
@@ -50,18 +52,26 @@ export default function Header(): JSX.Element {
 			</NavbarContent>
 
 			<NavbarContent className="hidden sm:flex gap-4" justify="center">
-				<NavbarItem>
-					<Link color="foreground" href="#">
-						Features
+				<NavbarItem isActive={ path === '/' }>
+					<Link
+						href="/"
+						aria-current={ path === '/' ? 'page' : undefined }
+						color={ path === '/' ? undefined : 'foreground' }
+					>
+						Home
 					</Link>
 				</NavbarItem>
-				<NavbarItem isActive>
-					<Link href="#" aria-current="page">
-						Customers
+				<NavbarItem isActive={ path === '/test' }>
+					<Link
+						href="/test"
+						aria-current={ path === '/test' ? 'page' : undefined }
+						color={ path === '/test' ? undefined : 'foreground' }
+					>
+						Test
 					</Link>
 				</NavbarItem>
-				<NavbarItem>
-					<Link color="foreground" href="#">
+				<NavbarItem isActive={ path === '/int' }>
+					<Link href="#" color="foreground">
 						Integrations
 					</Link>
 				</NavbarItem>
@@ -77,11 +87,11 @@ export default function Header(): JSX.Element {
 				</NavbarItem>
 			</NavbarContent>
 			<NavbarMenu>
-				{ menuItems.map((item, index) => (
+				{ menuItems.map((item: string, index: number) => (
 					<NavbarMenuItem key={ `${ item }-${ index }` }>
 						<Link
 							color={
-								index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
+								index === 2 ? 'primary' : index === menuItems.length - 1 ? 'danger' : 'foreground'
 							}
 							className="w-full"
 							href="#"
@@ -94,4 +104,4 @@ export default function Header(): JSX.Element {
 			</NavbarMenu>
 		</Navbar>
 	)
-};
+}

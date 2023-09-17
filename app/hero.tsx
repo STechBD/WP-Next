@@ -6,7 +6,7 @@
 export default function Hero(): JSX.Element {
 	return (<>
 		<div
-			className="relative overflow-hidden before:absolute before:top-0 before:left-1/2 before:bg-[url('./Polygon.svg')] before:bg-no-repeat before:bg-top before:bg-cover before:w-full before:h-full before:-z-[1] before:transform before:-translate-x-1/2 dark:before:bg-[url('./Polygon-Dark.svg')]">
+			className="relative overflow-hidden before:absolute before:top-0 before:left-1/2 before:bg-[url('/public/Polygon-Light.svg')] before:bg-no-repeat before:bg-top before:bg-cover before:w-full before:h-full before:-z-[1] before:transform before:-translate-x-1/2 dark:before:bg-[url('/public/Polygon-Dark.svg')]">
 			<div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
 
 				<div className="flex justify-center">
@@ -26,7 +26,7 @@ export default function Hero(): JSX.Element {
 
 				<div className="mt-5 max-w-2xl text-center mx-auto">
 					<h1 className="block font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl dark:text-gray-200">
-						Let's Build
+						Let's Build&nbsp;
 						<span
 							className="bg-clip-text bg-gradient-to-tl from-blue-600 to-violet-600 text-transparent">Blog</span>
 					</h1>
@@ -34,7 +34,7 @@ export default function Hero(): JSX.Element {
 
 
 				<div className="mt-5 max-w-3xl text-center mx-auto">
-					<p className="text-lg text-gray-600 dark:text-gray-400">WP-Next is a simple and beautiful blog frontend using Next.js and WordPress as a headless CMS.</p>
+					<p className="text-lg text-gray-600 dark:text-gray-400"><strong className="bg-clip-text bg-gradient-to-tl from-blue-600 to-violet-600 text-transparent">WordPress Next (WP-Next)</strong> is a simple and beautiful blog frontend using Next.js and WordPress as a headless CMS.</p>
 				</div>
 
 
