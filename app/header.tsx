@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import {
 	Button,
-	Link,
 	Navbar,
 	NavbarBrand,
 	NavbarContent,
@@ -13,6 +12,7 @@ import {
 	NavbarMenuToggle
 } from '@nextui-org/react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 
@@ -25,17 +25,16 @@ export default function Header(): JSX.Element {
 	const path: string | null = usePathname()
 	const [ isMenuOpen, setIsMenuOpen ] = useState(false)
 
-	const menuItems: string[] = [
-		'Profile',
-		'Dashboard',
-		'Activity',
-		'Analytics',
-		'System',
-		'Deployments',
-		'My Settings',
-		'Team Settings',
-		'Help & Feedback',
-		'Log Out',
+	interface MenuItem {
+		name: string,
+		link: string,
+	}
+
+	const menuItems: MenuItem[] = [
+		{ name: 'Home', link: '/', },
+		{ name: 'Blog', link: '/blog', },
+		{ name: 'About', link: '/about', },
+		{ name: 'Log Out', link: '/logout', },
 	]
 
 	return (
@@ -55,8 +54,7 @@ export default function Header(): JSX.Element {
 				<NavbarItem isActive={ path === '/' }>
 					<Link
 						href="/"
-						aria-current={ path === '/' ? 'page' : undefined }
-						color={ path === '/' ? undefined : 'foreground' }
+						className={ path === '/' ? 'text-[#3083F0] font-bold' : '' }
 					>
 						Home
 					</Link>
@@ -64,8 +62,7 @@ export default function Header(): JSX.Element {
 				<NavbarItem isActive={ path === '/test' }>
 					<Link
 						href="/test"
-						aria-current={ path === '/test' ? 'page' : undefined }
-						color={ path === '/test' ? undefined : 'foreground' }
+						className={ path === '/test' ? 'text-[#3083F0] font-bold' : '' }
 					>
 						Test
 					</Link>
@@ -87,17 +84,13 @@ export default function Header(): JSX.Element {
 				</NavbarItem>
 			</NavbarContent>
 			<NavbarMenu>
-				{ menuItems.map((item: string, index: number) => (
-					<NavbarMenuItem key={ `${ item }-${ index }` }>
+				{ menuItems.map((item: MenuItem, index: number) => (
+					<NavbarMenuItem key={ `${ item.name }-${ index }` }>
 						<Link
-							color={
-								index === 2 ? 'primary' : index === menuItems.length - 1 ? 'danger' : 'foreground'
-							}
-							className="w-full"
-							href="#"
-							size="lg"
+							className={ 'w-full' + (path === item.link ? ' text-[#3083F0] font-bold' : index === menuItems.length - 1 ? ' text-red-800' : '') }
+							href={ item.link }
 						>
-							{ item }
+							{ item.name }
 						</Link>
 					</NavbarMenuItem>
 				)) }
