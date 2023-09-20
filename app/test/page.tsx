@@ -1,9 +1,80 @@
+'use client'
+
 import Image from 'next/image'
+import Post from '@/app/storage/post'
+import { useEffect, useState } from 'react'
 
 
 export default function Page(): JSX.Element {
+	const [ data, setData ] = useState(null)
+
+	console.log('Working')
+	console.log(process.env.API)
+
+	useEffect(() => {
+		async function fetchData() {
+			try {
+				const apiData = await Post()
+				setData(apiData)
+			} catch (error) {
+				console.error('Error: ', error)
+			}
+		}
+
+		fetchData()
+	}, [])
+
+	/*Post().then((data) => {
+		console.log('yahooo')
+	}).catch((error) => {
+		console.error('error')
+	})*/
+
+	/*async function processData() {
+		try {
+			const data = await Post();
+			console.log(data);
+		} catch (error) {
+			console.error('Error:', error);
+		}
+	}
+
+	console.log(processData())*/
+
+	/*const API = process.env.API;
+
+	async function fetchData() {
+		const response = await fetch(`${ API }/wp-json/wp/v2/posts?_fields=id,title,author,categories&per_page=1`);
+		if (!response.ok) {
+			throw new Error('Network response was not ok');
+		}
+		return await response.json();
+	}
+
+	// Call the fetchData function and use the returned Promise
+	fetchData()
+		.then((postData) => {
+			// Now you can use postData outside the .then block
+			console.log(postData);
+			// You can perform other operations with postData here
+		})
+		.catch((error) => {
+			console.error('There was a problem with the fetch operation:', error);
+		});*/
+
+
 	return (
 		<main>
+			<div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+				{ data && data.map((post) => (
+					<div className="grid lg:grid-cols-2 gap-6" key={ post.id }>
+						{ post.title }
+					</div>
+				)) }
+			</div>
+			<div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+				{ data ? JSON.stringify(data) : 'No data' }
+			</div>
 			<div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
 
 				<div className="grid lg:grid-cols-2 gap-6">

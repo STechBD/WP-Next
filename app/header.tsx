@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
 	Button,
 	Navbar,
@@ -14,6 +14,7 @@ import {
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import Post from '@/app/storage/post'
 
 
 /**
@@ -24,6 +25,12 @@ import { usePathname } from 'next/navigation'
 export default function Header(): JSX.Element {
 	const path: string | null = usePathname()
 	const [ isMenuOpen, setIsMenuOpen ] = useState(false)
+	const [ post, setPost ] = useState([])
+
+	useEffect(() => {
+		Post().then(r => setPost(r))
+		console.log('Value of post: ' + post)
+	}, []);
 
 	interface MenuItem {
 		name: string,
@@ -65,6 +72,14 @@ export default function Header(): JSX.Element {
 						className={ path === '/test' ? 'text-[#3083F0] font-bold' : '' }
 					>
 						Test
+					</Link>
+				</NavbarItem>
+				<NavbarItem isActive={ post.find((item) => item.slug === path) }>
+					<Link
+						href="/blog"
+						className={ post.find((item) => item.slug === path) ? 'text-[#3083F0] font-bold' : '' }
+					>
+						Blog
 					</Link>
 				</NavbarItem>
 				<NavbarItem isActive={ path === '/int' }>

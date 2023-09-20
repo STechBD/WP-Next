@@ -36,7 +36,7 @@ export default function Content(): JSX.Element {
 		revalidateIfStale: false,
 		revalidateOnFocus: false,
 		revalidateOnReconnect: false
-	});
+	})
 
 	if (error) {
 		return (<main className="flex min-h-screen flex-col justify-between p-24">
