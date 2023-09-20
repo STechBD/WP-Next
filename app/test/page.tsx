@@ -8,9 +8,6 @@ import { useEffect, useState } from 'react'
 export default function Page(): JSX.Element {
 	const [ data, setData ] = useState(null)
 
-	console.log('Working')
-	console.log(process.env.API)
-
 	useEffect(() => {
 		async function fetchData() {
 			try {

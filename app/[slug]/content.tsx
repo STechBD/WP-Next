@@ -12,10 +12,10 @@ import FeaturedImage from '@/app/[slug]/featuredImage'
  */
 const fetcher = async (url: RequestInfo | URL): Promise<any> => {
 	try {
-		const response: Response = await fetch(url);
-		return await response.json();
+		const response: Response = await fetch(url)
+		return await response.json()
 	} catch (error) {
-		throw new Error('Error fetching data');
+		throw new Error('Error fetching data')
 	}
 }
 
@@ -34,7 +34,7 @@ export default function Content({ slug }: any): JSX.Element {
 		revalidateIfStale: false,
 		revalidateOnFocus: false,
 		revalidateOnReconnect: false
-	});
+	})
 
 	if (error) {
 		return (
@@ -44,19 +44,21 @@ export default function Content({ slug }: any): JSX.Element {
 					<p className="text-center text-gray-500 dark:text-gray-400">Error: { error }</p>
 				</div>
 			</main>
-		);
+		)
 	}
 
 	if (isLoading) {
-		return (<main className="flex min-h-screen flex-col justify-between p-24">
+		return (
+			<main className="flex min-h-screen flex-col justify-between p-24">
 			<div className="container mx-auto p-4">
 				<h1 className="text-6xl font-bold text-center text-gray-800 dark:text-white">Loading</h1>
 				<p className="text-center text-gray-500 dark:text-gray-400">Data is loading .....</p>
 			</div>
-		</main>)
+		</main>
+		)
 	}
 
-	return (<>
+	return (
 		<div className="grid grid-cols-1 justify-center max-w-[700px]">
 			<div className="vc_column tdi_62  wpb_column vc_column_container tdc-column td-pb-span12">
 				<div className="tdb-block-inner td-fix-index">
@@ -110,6 +112,5 @@ export default function Content({ slug }: any): JSX.Element {
 				<div dangerouslySetInnerHTML={ { __html: data[0].content.rendered } }/>
 			</div>
 		</div>
-
-	</>)
+	)
 }

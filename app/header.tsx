@@ -14,8 +14,24 @@ import {
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import Post from '@/app/storage/post'
+import Cookie from 'js-cookie'
+import useSWR from 'swr'
 
+
+/**
+ * Fetcher method to fetch data using SWR technology.
+ * @param url
+ * @return { Promise<any> }
+ * @since 1.0.0
+ */
+const fetcher = async (url: RequestInfo | URL): Promise<any> => {
+	try {
+		const response: Response = await fetch(url)
+		return await response.json()
+	} catch (error) {
+		throw new Error('Error fetching data')
+	}
+}
 
 /**
  * Header method to show the sticky header.
@@ -23,14 +39,10 @@ import Post from '@/app/storage/post'
  * @since 1.0.0
  */
 export default function Header(): JSX.Element {
+	const API: string | undefined = process.env.API
 	const path: string | null = usePathname()
 	const [ isMenuOpen, setIsMenuOpen ] = useState(false)
 	const [ post, setPost ] = useState([])
-
-	useEffect(() => {
-		Post().then(r => setPost(r))
-		console.log('Value of post: ' + post)
-	}, []);
 
 	interface MenuItem {
 		name: string,
@@ -44,6 +56,49 @@ export default function Header(): JSX.Element {
 		{ name: 'Log Out', link: '/logout', },
 	]
 
+	const {
+		data,
+		error,
+		isLoading
+	} = useSWR(API + '/wp-json/wp/v2/posts?_fields=id,title,author,slug,date,categories&per_page=100', fetcher, {
+		revalidateIfStale: false,
+		revalidateOnFocus: false,
+		revalidateOnReconnect: false
+	})
+
+	useEffect(() => {
+		if (data) {
+			const postList = data.map((post: {
+				id: any,
+				title: { rendered: any },
+				slug: any,
+				author: any,
+				date: any,
+				categories: any[]
+			}) => ({
+				id: post.id,
+				title: post.title.rendered,
+				slug: post.slug,
+				author: post.author,
+				date: post.date,
+				categories: post.categories.map((category) => ({ id: category })),
+			}))
+
+			const json: string = JSON.stringify(postList)
+
+			console.log('Cookie data to be set: ' + json)
+
+			Cookie.set('WP-Next-Post', json, {
+				expires: new Date(Date.now() + 60 * 60 * 1000), // 60 minutes
+				path: '/',
+			})
+
+			console.log('Cookie set: ' + Cookie.get('WP-Next-Post'))
+
+			setPost(postList)
+		}
+	}, [ data ]); // Only run this effect when `data` changes
+
 	return (
 		<Navbar onMenuOpenChange={ setIsMenuOpen }>
 			<NavbarContent>
@@ -52,8 +107,12 @@ export default function Header(): JSX.Element {
 					className="sm:hidden"
 				/>
 				<NavbarBrand>
-					<Image src="./WordPress-Next-Logo-Light.svg" alt="WordPress Next" width={ 32 } height={ 32 }/>
-					<p className="ml-2 font-bold text-inherit">WordPress Next</p>
+					<Link href="/">
+						<Image src="./WordPress-Next-Logo-Light.svg" alt="WordPress Next" width={ 32 } height={ 32 }/>
+					</Link>
+					<Link href="/">
+						<p className="ml-2 font-bold text-inherit">WordPress Next</p>
+					</Link>
 				</NavbarBrand>
 			</NavbarContent>
 
@@ -74,10 +133,13 @@ export default function Header(): JSX.Element {
 						Test
 					</Link>
 				</NavbarItem>
-				<NavbarItem isActive={ post.find((item) => item.slug === path) }>
+				<NavbarItem
+					isActive={ post && !!post.find((item: { slug: string | null }) => ('/' + item.slug) === path) }>
 					<Link
 						href="/blog"
-						className={ post.find((item) => item.slug === path) ? 'text-[#3083F0] font-bold' : '' }
+						className={ post && !!post.find((item: {
+							slug: string | null
+						}) => ('/' + item.slug) === path) ? 'text-[#3083F0] font-bold' : '' }
 					>
 						Blog
 					</Link>
