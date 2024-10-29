@@ -1,5 +1,4 @@
-'use client'
-
+import { JSX } from 'react'
 import useSWR from 'swr'
 import Image from 'next/image'
 import Article from '@/app/article'
@@ -32,7 +31,11 @@ export default function Content(): JSX.Element {
 	const minutes: number = date.getMinutes();
 	const seconds: number = date.getSeconds();
 
-	const { data, error, isLoading } = useSWR('http://localhost:3000/data.json'/*'https://blog.shikkhaweb.com/wp-json/wp/v2/posts/'*/, fetcher, {
+	const {
+		data,
+		error,
+		isLoading
+	} = useSWR('http://localhost:3000/data.json'/*'https://blog.shikkhaweb.com/wp-json/wp/v2/posts/'*/, fetcher, {
 		revalidateIfStale: false,
 		revalidateOnFocus: false,
 		revalidateOnReconnect: false
