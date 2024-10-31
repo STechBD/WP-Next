@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import useSWR from "swr"
+import useSWR from 'swr'
 
 /**
  * Fetcher method to fetch data using SWR technology.
@@ -9,8 +9,8 @@ import useSWR from "swr"
  */
 const fetcher = async (url: RequestInfo | URL): Promise<any> => {
 	try {
-		const response: Response = await fetch(url);
-		return await response.json();
+		const response: Response = await fetch(url)
+		return await response.json()
 	} catch (error) {
 		throw new Error('Error fetching data')
 	}
@@ -23,8 +23,8 @@ const fetcher = async (url: RequestInfo | URL): Promise<any> => {
  * @since 1.0.0
  */
 export default function FeaturedImage({ id }: any): JSX.Element {
-
-	const { data, error, isLoading } = useSWR('https://blog.shikkhaweb.com/wp-json/wp/v2/media/' + id + '/', fetcher, {
+	const api: string = process.env.API ?? ''
+	const { data, error, isLoading } = useSWR(api + '/wp-json/wp/v2/media/' + id + '/', fetcher, {
 		revalidateIfStale: false,
 		revalidateOnFocus: false,
 		revalidateOnReconnect: false
@@ -45,7 +45,7 @@ export default function FeaturedImage({ id }: any): JSX.Element {
 			alt={ data.title.rendered }
 			width={ data.media_details.sizes.full.width }
 			height={ data.media_details.sizes.full.height }
-			loading={ "lazy" }
+			loading="lazy"
 			className="rounded-tl-xl rounded-tr-xl"
 		/>
 	)

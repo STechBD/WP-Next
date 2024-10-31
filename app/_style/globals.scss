@@ -1,0 +1,604 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+	--foreground-rgb: 0, 0, 0;
+	--background-start-rgb: 214, 219, 220;
+	--background-end-rgb: 255, 255, 255;
+}
+
+/*@media (prefers-color-scheme: dark) {
+	:root {
+		--foreground-rgb: 255, 255, 255;
+		--background-start-rgb: 0, 0, 0;
+		--background-end-rgb: 0, 0, 0;
+	}
+}
+
+body {
+	color: rgb(var(--foreground-rgb));
+	background: linear-gradient(
+			to bottom,
+			transparent,
+			rgb(var(--background-end-rgb))
+	) rgb(var(--background-start-rgb));
+}*/
+
+
+/**
+ * Custom scrollbar.
+ *
+ * @since 3.0.0
+ */
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	box-shadow: inset 0 0 5px grey;
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--primary);
+	border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--secondary);
+	cursor: grab;
+}
+
+::-webkit-scrollbar-thumb:active {
+	background: var(--secondary);
+	cursor: grabbing;
+}
+
+// cursor design
+
+/* cursor design */
+.cursor {
+	position: fixed;
+	width: 20px;
+	height: 20px;
+	border: 2px solid var(--primary);
+	border-radius: 50%;
+	pointer-events: none;
+	z-index: 9999;
+	transition: all 0.1s ease;
+	transition-property: width, height, border;
+	will-change: width, height, transform, border;
+}
+
+.cursor-dot {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background-color: var(--primary);
+	border-radius: 50%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	transition: all 0.1s ease;
+}
+
+.cursor-dot.active {
+	background-color: var(--secondary);
+}
+
+
+/**
+ * Color Theme.
+ * You can change the theme of the website by changing the values of the primary and secondary colors.
+ * You can also add more themes by adding more CSS variables.
+ *
+ * @since 3.0.0
+ */
+/* Default Theme */
+:root {
+	--primary: #4F46E5;
+	--secondary: #4338CA;
+}
+
+/* Red Theme */
+.theme-red {
+	--primary: #DC2626;
+	--secondary: #B91C1C;
+}
+
+/* Green Theme */
+.theme-green {
+	--primary: #16A34A;
+	--secondary: #15803D;
+}
+
+/* Teal Theme */
+.theme-teal {
+	--primary: #0D9488;
+	--secondary: #0F766E;
+}
+
+/* Blue Theme */
+.theme-blue {
+	--primary: #2563EB;
+	--secondary: #1D4ED8;
+}
+
+/* Indigo Theme */
+.theme-indigo {
+	--primary: #4F46E5;
+	--secondary: #4338CA;
+}
+
+/* Purple Theme */
+.theme-purple {
+	--primary: #9333EA;
+	--secondary: #7E22CE;
+}
+
+.theme-rose {
+	--primary: #E11D48;
+	--secondary: #BE123C;
+}
+
+
+/**
+ * Default rule.
+ *
+ * @since 3.0.0
+ */
+.text {
+	a {
+		&:link {
+			color: var(--primary);
+			text-decoration: none;
+		}
+
+		&:visited {
+			color: var(--primary);
+			text-decoration: none;
+		}
+
+		&:hover {
+			color: var(--secondary);
+			text-decoration: none;
+		}
+
+		&:active {
+			color: var(--secondary);
+			text-decoration: none;
+		}
+
+		&:focus {
+			color: var(--secondary);
+			text-decoration: none;
+		}
+
+		&:focus-visible {
+			color: var(--secondary);
+			text-decoration: none;
+		}
+
+		&:focus-within {
+			color: var(--secondary);
+			text-decoration: none;
+		}
+	}
+}
+
+a, input[type=submit], button, .button, select {
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+textarea, input[type=text], input[type=email], input[type=password], input[type=number], input[type=tel], input[type=url], input[type=search], input[type=date], input[type=time], input[type=datetime-local], input[type=month], input[type=week], input[type=range], input[type=color], input[type=file], input[type=checkbox], input[type=radio], input[type=button], input[type=reset], input[type=image], input[type=submit], button, .button {
+	&:focus {
+		cursor: text;
+	}
+}
+
+a, input, textarea button, .button, select {
+	&:disabled {
+		cursor: not-allowed;
+	}
+
+	&:active {
+		cursor: grabbing;
+	}
+
+	&:focus {
+		cursor: pointer;
+	}
+
+	&:focus-visible {
+		cursor: pointer;
+	}
+
+	&:focus-within {
+		cursor: pointer;
+	}
+
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+input, select, textarea, button {
+	accent-color: var(--primary);
+}
+
+::selection {
+	background-color: var(--primary);
+	color: white;
+}
+
+
+/**
+ * Page Layout.
+ *
+ * @since 3.0.0
+ */
+.screen-height {
+	height: calc(100vh - 80px);
+}
+
+
+/**
+ * S Technologies Animated Logo Icon.
+ *
+ * @since 3.0.0
+ */
+.STechBD_Animated_Icon {
+	.Green_Shadow, .Green_Main, .Blue_Shadow, .S_Shadow, .Yellow_Main, .S_Main, .Red_Shadow, .Yellow_Shadow, .Blue_Main, .Red_Main {
+		stroke-width: 0;
+		transition: fill 3s ease;
+	}
+
+	.Circle {
+		fill: #fff;
+	}
+
+	.Green_Main {
+		fill: #18b13d;
+	}
+
+	.Green_Shadow {
+		fill: #005e00;
+	}
+
+	.Blue_Main {
+		fill: #4c5fab;
+	}
+
+	.Blue_Shadow {
+		fill: #00004d;
+	}
+
+	.Yellow_Main {
+		fill: #fdc609;
+	}
+
+	.Yellow_Shadow {
+		fill: #d69003;
+	}
+
+	.Red_Main {
+		fill: #eb2e40;
+	}
+
+	.Red_Shadow {
+		fill: #a10000;
+	}
+
+	.S_Main {
+		fill: #333;
+	}
+
+	.S_Shadow {
+		fill: #000;
+	}
+
+}
+
+
+/**
+ * Loader of the page.
+ *
+ * @since 1.0.0
+ */
+.loader {
+	height: 100%;
+	width: 100%;
+	background: white;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	z-index: 1001;
+
+	> .loader-position {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
+
+	> .circular {
+		animation: rotate 2s linear infinite;
+		transform-origin: center center;
+
+		> .path {
+			stroke-dasharray: 1, 200;
+			stroke-dashoffset: 0;
+			animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+			stroke-linecap: round;
+		}
+
+		@keyframes rotate {
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		@keyframes dash {
+			0% {
+				stroke-dasharray: 1, 200;
+				stroke-dashoffset: 0;
+			}
+
+			50% {
+				stroke-dasharray: 89, 200;
+				stroke-dashoffset: -35px;
+			}
+
+			100% {
+				stroke-dasharray: 89, 200;
+				stroke-dashoffset: -124px;
+			}
+		}
+
+		@keyframes color {
+			100%,
+			0% {
+				stroke: #d62d20;
+			}
+
+			40% {
+				stroke: #0057e7;
+			}
+
+			66% {
+				stroke: #008744;
+			}
+
+			80%, 90% {
+				stroke: #ffa700;
+			}
+		}
+	}
+
+	> .circular-size {
+		height: 100px;
+		width: 100px;
+	}
+}
+
+html.dark {
+	.loader {
+		background: #111111;
+
+		> .circular {
+			> .path {
+				stroke: white;
+			}
+		}
+	}
+}
+
+
+/**
+ * Footer style.
+ *
+ * @since 3.0.0
+ */
+footer {
+	a:hover {
+		color: var(--secondary);
+	}
+}
+
+
+/**
+ * Blog post style.
+ *
+ * @since 3.0.0
+ */
+.post-content {
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: bold;
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+	}
+
+	h1 {
+		font-size: 3rem;
+	}
+
+	h2 {
+		font-size: 2.5rem;
+	}
+
+	h3 {
+		font-size: 2rem;
+	}
+
+	h4 {
+		font-size: 1.5rem;
+	}
+
+	h5 {
+		font-size: 1.25rem;
+	}
+
+	h6 {
+		font-size: 1rem;
+	}
+
+	p {
+		font-size: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	ul {
+		margin-bottom: 1rem;
+	}
+
+	ol {
+		margin-bottom: 1rem;
+	}
+
+	li {
+		font-size: 1rem;
+		margin-bottom: 0.5rem;
+	}
+
+	a {
+		font-size: 1rem;
+		margin-bottom: 1rem;
+		color: var(--primary);
+	}
+
+	img {
+		margin-bottom: 1rem;
+	}
+
+	blockquote {
+		font-size: 1rem;
+		margin-bottom: 1rem;
+		padding: 0.2rem 1rem;
+		border-left: 0.35rem solid var(--primary);
+
+		*:last-child {
+			margin-bottom: 0;
+		}
+	}
+
+	code {
+		font-size: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	pre {
+		font-size: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	table {
+		width: 100%;
+		font-size: 1rem;
+		margin-bottom: 1rem;
+		border: 1px;
+	}
+
+	thead {
+		font-size: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	tbody {
+		font-size: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	tfoot {
+		font-size: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	tr {
+		font-size: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	th {
+		font-size: 1rem;
+		font-weight: bold;
+		margin-bottom: 1rem;
+	}
+
+	td {
+		font-size: 1rem;
+		margin-bottom: 1rem;
+	}
+
+	hr {
+		border-bottom: 1px solid black;
+		margin-bottom: 1rem;
+	}
+
+	small {
+		font-size: 0.875rem;
+	}
+
+	sub {
+		font-size: 0.875rem;
+	}
+
+	sup {
+		font-size: 0.875rem;
+	}
+
+	del {
+		text-decoration: line-through;
+	}
+
+	ins {
+		text-decoration: underline;
+	}
+
+	mark {
+		background-color: #FFFF00;
+		color: black;
+	}
+
+	abbr {
+		text-decoration: none;
+	}
+
+	address {
+		font-style: normal;
+	}
+
+	b {
+		font-weight: 700;
+	}
+
+	big {
+		font-size: 1.25rem;
+	}
+
+	s {
+		text-decoration: line-through;
+	}
+
+	code {
+		display: block;
+	}
+
+	pre {
+		background: #f4f4f4;
+		width: 100%;
+		padding: 0.75rem 1rem;
+		font-size: 1rem;
+		margin-bottom: 1rem;
+	}
+}
