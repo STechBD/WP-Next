@@ -339,13 +339,6 @@ export default function Footer(): JSX.Element {
 								</li>
 							)) }
 						</ul>
-						<Image
-							src="https://images.dmca.com/Badges/dmca-badge-w200-2x1-03.png?ID=2b2a9269-d99b-4199-ad70-2e00c8556201"
-							alt="DMCA.com Protection Status"
-							className="h-10 w-auto"
-							height={ 100 }
-							width={ 100 }
-						/>
 					</div>
 				</div>
 				<hr className="dark:border-t-gray-300"/>
@@ -419,7 +412,7 @@ export default function Footer(): JSX.Element {
 			</div>
 		</footer>
 		{
-			process.env.NODE_ENV === 'production' ? (<>
+			process.env.NODE_ENV === 'production' && process.env.GA === 'True' ? (<>
 				<Script src="https://www.googletagmanager.com/gtag/js?id=G-XWQG24GEHS" async
 				        strategy="lazyOnload"></Script>
 				<Script id="google-analytics">
@@ -428,7 +421,7 @@ export default function Footer(): JSX.Element {
 						function gtag(){ dataLayer.push(arguments); }
 						gtag('js', new Date());
 
-						gtag('config', 'G-XWQG24GEHS');`
+						gtag('config', '${ process.env.GA_TRACKING_ID }');`
 					}
 				</Script>
 			</>) : <></>
