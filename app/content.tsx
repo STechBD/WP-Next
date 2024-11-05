@@ -11,7 +11,7 @@ import { Progress } from '@nextui-org/react'
  * @since 1.0.0
  */
 export default async function Content(): Promise<JSX.Element> {
-	const api: string = (process.env.API ?? '') + '/wp-json/wp/v2/posts/'
+	const api: string = (process.env.API ?? '') + '/wp-json/wp/v2/posts?_fields=id,title,excerpt,date,link,slug,featured_media'
 	const date: Date = new Date()
 	const hours: number = date.getHours()
 	const minutes: number = date.getMinutes()
