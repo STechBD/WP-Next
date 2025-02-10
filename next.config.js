@@ -7,10 +7,8 @@ module.exports = {
 		API: parsed.API,
 	},
 	images: {
-		domains: [
-			'blog.shikkhaweb.com',
-			'tailwindui.com',
-			'images.unsplash.com'
-		],
+		domains: process.env.IMAGE_DOMAINS
+      ? process.env.IMAGE_DOMAINS.split(',')
+      : [],
 	},
 }

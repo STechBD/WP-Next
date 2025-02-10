@@ -2,7 +2,7 @@ import { JSX } from 'react'
 import useSWR from 'swr'
 import Image from 'next/image'
 import Article from '@/app/article'
-import { Progress } from '@nextui-org/react'
+import { Progress } from "@heroui/react"
 
 
 /**
