@@ -7,8 +7,8 @@ module.exports = {
 		API: parsed.API,
 	},
 	images: {
-		domains: process.env.IMAGE_DOMAINS
-      ? process.env.IMAGE_DOMAINS.split(',')
+		domains: parsed.IMAGE_DOMAINS
+      ? parsed.IMAGE_DOMAINS.split(',')
       : [],
 	},
 }

@@ -1,3 +1,4 @@
+import { JSX } from 'react'
 import type { Metadata } from 'next'
 import Content from '@/app/[slug]/content'
 
@@ -27,9 +28,9 @@ export async function generateMetadata({ params }: {
 		slug: string
 	}
 }): Promise<Metadata> {
-	const slug: string = params.slug
+	const { slug } = params
 
-	const data = await fetch('https://blog.shikkhaweb.com/wp-json/wp/v2/posts?slug=' + slug).then((res: Response) => res.json())
+	const data = await fetch(process.env.API + '/wp-json/wp/v2/posts?slug=' + slug).then((res: Response) => res.json())
 
 	return {
 		title: data[0].title.rendered,
@@ -41,11 +42,11 @@ export async function generateMetadata({ params }: {
  * @param params
  * @constructor
  */
-export default function Page({ params }: {
+export default async function Page({ params }: {
 	params: {
 		slug: string
 	}
-}) {
+}): Promise<JSX.Element> {
 	const data = fetcher(params.slug)
 
 	return <>

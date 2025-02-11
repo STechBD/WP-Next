@@ -1,7 +1,7 @@
 import { JSX } from 'react'
 import striptags from 'striptags'
 import Link from 'next/link'
-import FeaturedImage from '@/app/featuredImage'
+import FeaturedImage from '@/app/_component/featuredImage'
 
 
 /**

@@ -1,7 +1,4 @@
-'use client'
-
-import useSWR from 'swr'
-import FeaturedImage from '@/app/[slug]/featuredImage'
+import FeaturedImage from '@/app/_component/featuredImage'
 
 
 /**
@@ -24,37 +21,17 @@ const fetcher = async (url: RequestInfo | URL): Promise<any> => {
  * @return { JSX.Element }
  * @since 1.0.0
  */
-export default function Content({ slug }: any): JSX.Element {
-	const date: Date = new Date()
-	const hours: number = date.getHours()
-	const minutes: number = date.getMinutes()
-	const seconds: number = date.getSeconds()
+export default async function Content({ slug }: any): Promise<JSX.Element> {
+	const data = await fetcher(process.env.API + '/wp-json/wp/v2/posts?slug=' + slug)
 
-	const { data, error, isLoading } = useSWR('https://blog.shikkhaweb.com/wp-json/wp/v2/posts?slug=' + slug, fetcher, {
-		revalidateIfStale: false,
-		revalidateOnFocus: false,
-		revalidateOnReconnect: false
-	})
-
-	if (error) {
+	if (!data) {
 		return (
 			<main className="flex min-h-screen flex-col justify-between p-24">
 				<div className="container mx-auto p-4">
 					<h1 className="text-6xl font-bold text-center text-gray-800 dark:text-white">Error</h1>
-					<p className="text-center text-gray-500 dark:text-gray-400">Error: { error }</p>
+					<p className="text-center text-gray-500 dark:text-gray-400">Error loading data.</p>
 				</div>
 			</main>
-		)
-	}
-
-	if (isLoading) {
-		return (
-			<main className="flex min-h-screen flex-col justify-between p-24">
-			<div className="container mx-auto p-4">
-				<h1 className="text-6xl font-bold text-center text-gray-800 dark:text-white">Loading</h1>
-				<p className="text-center text-gray-500 dark:text-gray-400">Data is loading .....</p>
-			</div>
-		</main>
 		)
 	}
 
@@ -64,7 +41,8 @@ export default function Content({ slug }: any): JSX.Element {
 				<div className="tdb-block-inner td-fix-index">
 					<span><a title="" className="tdb-entry-crumb" href="https://blog.shikkhaweb.com/">Home</a></span>
 					<i className="tdb-bread-sep td-icon-right"></i>
-					<span><a title="View all posts in সাবজেক্ট রিভিউ" className="tdb-entry-crumb" href="https://blog.shikkhaweb.com/category/subject-review/">সাবজেক্ট রিভিউ</a></span>
+					<span><a title="View all posts in সাবজেক্ট রিভিউ" className="tdb-entry-crumb"
+					         href="https://blog.shikkhaweb.com/category/subject-review/">সাবজেক্ট রিভিউ</a></span>
 					<i className="tdb-bread-sep tdb-bred-no-url-last td-icon-right"></i>
 					<span className="tdb-bred-no-url-last">সমুদ্রবিজ্ঞান (ওশানোগ্রাফি) - সাবজেক্ট রিভিউ</span>
 				</div>
@@ -104,8 +82,9 @@ export default function Content({ slug }: any): JSX.Element {
 				<FeaturedImage id={ data[0].featured_media }/>
 			</div>
 			<div className="container mx-auto">
-				<h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white">{ data[0].title.rendered }</h1>
-				<p className="text-center text-gray-500 dark:text-gray-400">Time: { hours + ':' + minutes + ':' + seconds }</p>
+				<h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white">
+					{ data[0].title.rendered }
+				</h1>
 			</div>
 			<div
 				className="my-20">

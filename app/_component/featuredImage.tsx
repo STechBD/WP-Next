@@ -23,10 +23,10 @@ export default async function FeaturedImage({ id }: any): Promise<JSX.Element> {
 	return (
 		<Image
 			key={ data.id }
-			src={ data.media_details.sizes.medium.source_url }
+			src={ data.media_details.sizes.medium.source_url ?? '/image/WP-Next.webp' }
 			alt={ data.title.rendered }
-			width={ data.media_details.sizes.full.width }
-			height={ data.media_details.sizes.full.height }
+			width={ data.media_details.sizes.full.width ?? 1200 }
+			height={ data.media_details.sizes.full.height ?? 628}
 			loading="lazy"
 			className="rounded-tl-xl rounded-tr-xl"
 		/>
