@@ -23,7 +23,7 @@ export default function Mode(): JSX.Element {
 
 		Cookie.set('stechbd-wp-next-mode', lightMode ? 'light' : 'dark', {
 			expires: 365,
-			domain: process.env.MAIN_DOMAIN,
+			domain: process.env.DOMAIN,
 		})
 	}
 

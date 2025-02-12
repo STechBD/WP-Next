@@ -30,7 +30,7 @@ body {
 /**
  * Custom scrollbar.
  *
- * @since 3.0.0
+ * @since 1.0.0
  */
 ::-webkit-scrollbar {
 	width: 10px;
@@ -95,7 +95,7 @@ body {
  * You can change the theme of the website by changing the values of the primary and secondary colors.
  * You can also add more themes by adding more CSS variables.
  *
- * @since 3.0.0
+ * @since 1.0.0
  */
 /* Default Theme */
 :root {
@@ -148,7 +148,7 @@ body {
 /**
  * Default rule.
  *
- * @since 3.0.0
+ * @since 1.0.0
  */
 .text {
 	a {
@@ -240,7 +240,7 @@ input, select, textarea, button {
 /**
  * Page Layout.
  *
- * @since 3.0.0
+ * @since 1.0.0
  */
 .screen-height {
 	height: calc(100vh - 80px);
@@ -250,7 +250,7 @@ input, select, textarea, button {
 /**
  * S Technologies Animated Logo Icon.
  *
- * @since 3.0.0
+ * @since 1.0.0
  */
 .STechBD_Animated_Icon {
 	.Green_Shadow, .Green_Main, .Blue_Shadow, .S_Shadow, .Yellow_Main, .S_Main, .Red_Shadow, .Yellow_Shadow, .Blue_Main, .Red_Main {
@@ -408,7 +408,7 @@ html.dark {
 /**
  * Footer style.
  *
- * @since 3.0.0
+ * @since 1.0.0
  */
 footer {
 	a:hover {
@@ -418,11 +418,41 @@ footer {
 
 
 /**
- * Blog post style.
+ * Blog post style with Tailwind-style dark mode (`html.dark`).
  *
- * @since 3.0.0
+ * @since 1.0.0
  */
+
+// Light Mode Variables
+$light-text: #1a1a1a;
+$light-bg: #ffffff;
+$light-border: #e5e7eb;
+$light-link: #1d4ed8;
+$light-link-hover: #2563eb;
+$light-mark-bg: #ffff00;
+$light-pre-bg: #f4f4f4;
+
+// Dark Mode Variables
+$dark-text: #e5e7eb;
+$dark-bg: #1e293b;
+$dark-border: #374151;
+$dark-link: #60a5fa;
+$dark-link-hover: #93c5fd;
+$dark-mark-bg: #facc15;
+$dark-pre-bg: #2d3748;
+
 .post-content {
+	color: $light-text;
+	background-color: $light-bg;
+	padding: 1.5rem;
+	border-radius: 8px;
+
+	// Dark Mode via `html.dark`
+	html.dark & {
+		color: $dark-text;
+		background-color: $dark-bg;
+	}
+
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: bold;
 		margin-top: 2rem;
@@ -453,107 +483,123 @@ footer {
 		font-size: 1rem;
 	}
 
-	p {
+	p, li {
 		font-size: 1rem;
 		margin-bottom: 1rem;
 	}
 
-	ul {
+	ul, ol {
 		margin-bottom: 1rem;
-	}
-
-	ol {
-		margin-bottom: 1rem;
-	}
-
-	li {
-		font-size: 1rem;
-		margin-bottom: 0.5rem;
+		padding-left: 1.5rem;
 	}
 
 	a {
 		font-size: 1rem;
-		margin-bottom: 1rem;
-		color: var(--primary);
+		color: $light-link;
+		text-decoration: underline;
+		transition: color 0.2s;
+
+		&:hover {
+			color: $light-link-hover;
+		}
+
+		html.dark & {
+			color: $dark-link;
+
+			&:hover {
+				color: $dark-link-hover;
+			}
+		}
 	}
 
 	img {
+		display: block;
+		max-width: 100%;
+		height: auto;
 		margin-bottom: 1rem;
+		border-radius: 6px;
 	}
 
 	blockquote {
 		font-size: 1rem;
 		margin-bottom: 1rem;
 		padding: 0.2rem 1rem;
-		border-left: 0.35rem solid var(--primary);
+		border-left: 0.35rem solid $light-link;
+		font-style: italic;
 
-		*:last-child {
-			margin-bottom: 0;
+		html.dark & {
+			border-left-color: $dark-link;
 		}
 	}
 
 	code {
 		font-size: 1rem;
-		margin-bottom: 1rem;
+		background: lighten($light-border, 10%);
+		padding: 0.2rem 0.4rem;
+		border-radius: 4px;
+		font-family: monospace;
+
+		html.dark & {
+			background: darken($dark-border, 10%);
+		}
 	}
 
 	pre {
+		background: $light-pre-bg;
+		padding: 0.75rem 1rem;
 		font-size: 1rem;
 		margin-bottom: 1rem;
+		border-radius: 6px;
+		overflow-x: auto;
+
+		html.dark & {
+			background: $dark-pre-bg;
+		}
 	}
 
 	table {
 		width: 100%;
 		font-size: 1rem;
 		margin-bottom: 1rem;
-		border: 1px;
-	}
+		border-collapse: collapse;
+		border: 1px solid $light-border;
 
-	thead {
-		font-size: 1rem;
-		margin-bottom: 1rem;
-	}
+		html.dark & {
+			border-color: $dark-border;
+		}
 
-	tbody {
-		font-size: 1rem;
-		margin-bottom: 1rem;
-	}
+		th, td {
+			border: 1px solid $light-border;
+			padding: 0.5rem;
 
-	tfoot {
-		font-size: 1rem;
-		margin-bottom: 1rem;
-	}
-
-	tr {
-		font-size: 1rem;
-		margin-bottom: 1rem;
-	}
-
-	th {
-		font-size: 1rem;
-		font-weight: bold;
-		margin-bottom: 1rem;
-	}
-
-	td {
-		font-size: 1rem;
-		margin-bottom: 1rem;
+			html.dark & {
+				border-color: $dark-border;
+			}
+		}
 	}
 
 	hr {
-		border-bottom: 1px solid black;
+		border-bottom: 1px solid $light-border;
 		margin-bottom: 1rem;
+
+		html.dark & {
+			border-bottom-color: $dark-border;
+		}
 	}
 
-	small {
-		font-size: 0.875rem;
+	mark {
+		background-color: $light-mark-bg;
+		color: $light-text;
+		padding: 0.2rem 0.4rem;
+		border-radius: 3px;
+
+		html.dark & {
+			background-color: $dark-mark-bg;
+			color: $dark-text;
+		}
 	}
 
-	sub {
-		font-size: 0.875rem;
-	}
-
-	sup {
+	small, sub, sup {
 		font-size: 0.875rem;
 	}
 
@@ -565,11 +611,6 @@ footer {
 		text-decoration: underline;
 	}
 
-	mark {
-		background-color: #FFFF00;
-		color: black;
-	}
-
 	abbr {
 		text-decoration: none;
 	}
@@ -578,7 +619,7 @@ footer {
 		font-style: normal;
 	}
 
-	b {
+	b, strong {
 		font-weight: 700;
 	}
 
@@ -589,16 +630,5 @@ footer {
 	s {
 		text-decoration: line-through;
 	}
-
-	code {
-		display: block;
-	}
-
-	pre {
-		background: #f4f4f4;
-		width: 100%;
-		padding: 0.75rem 1rem;
-		font-size: 1rem;
-		margin-bottom: 1rem;
-	}
 }
+

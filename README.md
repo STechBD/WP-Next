@@ -1,34 +1,131 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# WP-Next - A Headless CMS with WordPress and Next.js
 
-## Getting Started
+**WP-Next** is a simple and beautiful blog frontend using Next.js and WordPress as a headless CMS developed by
+**[S Technologies](https://www.stechbd.net)**. It is a fully responsive blog frontend that is easy to customize and use.
+It is built with Next.js, Tailwind CSS, and WordPress.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Customization](#customization)
+- [Contributing](#contributing)
+- [License](#license)
+- [Credits](#credits)
+- [Contact](#contact)
+- [Support](#support)
+- [Acknowledgements](#acknowledgements)
+- [Changelog](#changelog)
+- [Roadmap](#roadmap)
+- [Security](#security)
+- [Authors](#authors)
+- [History](#history)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Fully responsive
+- Easy to customize
+- Fast loading
+- SEO friendly
+- Beautiful design
+- Dark mode
+- Pagination
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Installation
 
-## Learn More
+1. Clone the repository
+2. Install the dependencies
+3. Run the development server
+   ```shell
+   git clone
+   cd wp-next
+   npm install
+   npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+## Usage
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Create a `.env.local` file in the root directory
+2. Add the following environment variables
+   ```shell
+   DOMAIN=example.com
+   SITE=https://www.example.com
+   API=https://api.example.com
+   GA=True
+   GA_TRACKING_ID=G-XXXXXXXXXX
+   IMAGE_DOMAINS=cdn.example.com
+   ```
+3. Run the development server
+   ```shell
+   npm run dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
+5. Enjoy!
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Customization
 
-## Deploy on Vercel
+1. Change the logo, favicon, and manifest in the `public` directory.
+2. Change the colors, fonts, and styles in the `styles` directory.
+3. Change the layout, components, and pages in the `component` directories.
+4. Change the posts, pages, and categories in the `app` directory.
+5. Change the settings, menus, and widgets in the `config` directory.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Fork the repository
+2. Create a new branch
+3. Make your changes
+4. Commit your changes
+5. Push your changes
+6. Create a new pull request
+7. Wait for approval
+8. Merge the pull request
+9. Delete your branch
+10. Enjoy!
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Credits
+
+- [Next.js](https://nextjs.org)
+- [Tailwind CSS](https://tailwindcss.com)
+- [WordPress](https://wordpress.org)
+
+## Contact
+
+- Website: [S Technologies](https://www.stechbd.net)
+- Email: [product@stechbd.net](mailto:product@stechbd.net)
+- Form: [Contact Us](https://www.stechbd.net/contact)
+
+## Support
+
+If you need any help or have any questions, please feel free to contact us.
+
+## Acknowledgements
+
+We would like to thank all the developers and contributors who made this project possible.
+
+## Changelog
+
+See the [CHANGELOG](CHANGELOG.md) file for details.
+
+## Roadmap
+
+- Add search functionality
+- Add comments functionality
+- Add contact form functionality
+
+## Security
+
+If you discover any security-related issues, please email [product@stechbd.net](mailto:product@stechbd.net)
+
+## Authors
+
+- [Md. Ashraful Alam Shemul](https://github.com/AAShemul)
+
+## History
+
+- Version 1.0.0 - Initial release

@@ -1,95 +1,69 @@
+import React from 'react'
 import FeaturedImage from '@/app/_component/featuredImage'
-
+import Breadcrumbs from '@/app/_component/breadcrumbs'
 
 /**
- * Fetcher method to fetch data using SWR technology.
- * @param url
- * @return { Promise<any> }
+ * Fetch post data from WordPress API.
+ * @param {string} slug
+ * @return {Promise<any>}
  * @since 1.0.0
  */
-const fetcher = async (url: RequestInfo | URL): Promise<any> => {
+const fetchPost = async (slug: string): Promise<any> => {
 	try {
-		const response: Response = await fetch(url)
-		return await response.json()
+		const response = await fetch(`${ process.env.API }/wp-json/wp/v2/posts?slug=${ slug }&_embed`, { cache: 'no-store' })
+		if (!response.ok) throw new Error('Failed to fetch data')
+		const data = await response.json()
+		if (!data || data.length === 0) throw new Error('Post not found')
+		return data[0]
 	} catch (error) {
-		throw new Error('Error fetching data')
+		console.error('Error fetching post:', error)
+		throw error
 	}
 }
 
 /**
- * Content method to load all articles.
- * @return { JSX.Element }
+ * Content component with sidebar layout.
+ * @param { slug: string }
+ * @return { Promise<JSX.Element> }
  * @since 1.0.0
  */
-export default async function Content({ slug }: any): Promise<JSX.Element> {
-	const data = await fetcher(process.env.API + '/wp-json/wp/v2/posts?slug=' + slug)
-
-	if (!data) {
+export default async function Content({ slug }: { slug: string }): Promise<JSX.Element> {
+	let post
+	try {
+		post = await fetchPost(slug)
+	} catch (error) {
 		return (
-			<main className="flex min-h-screen flex-col justify-between p-24">
-				<div className="container mx-auto p-4">
-					<h1 className="text-6xl font-bold text-center text-gray-800 dark:text-white">Error</h1>
-					<p className="text-center text-gray-500 dark:text-gray-400">Error loading data.</p>
+			<main className="flex min-h-screen items-center justify-center">
+				<div className="text-center">
+					<h1 className="text-3xl font-bold text-red-600 dark:text-red-400">Error</h1>
+					<p className="text-gray-500 dark:text-gray-400">Could not load content.</p>
 				</div>
 			</main>
 		)
 	}
 
+	// Extract categories dynamically
+	const categories = post._embedded?.['wp:term']?.[0] || []
+
 	return (
-		<div className="grid grid-cols-1 justify-center max-w-[700px]">
-			<div className="vc_column tdi_62  wpb_column vc_column_container tdc-column td-pb-span12">
-				<div className="tdb-block-inner td-fix-index">
-					<span><a title="" className="tdb-entry-crumb" href="https://blog.shikkhaweb.com/">Home</a></span>
-					<i className="tdb-bread-sep td-icon-right"></i>
-					<span><a title="View all posts in সাবজেক্ট রিভিউ" className="tdb-entry-crumb"
-					         href="https://blog.shikkhaweb.com/category/subject-review/">সাবজেক্ট রিভিউ</a></span>
-					<i className="tdb-bread-sep tdb-bred-no-url-last td-icon-right"></i>
-					<span className="tdb-bred-no-url-last">সমুদ্রবিজ্ঞান (ওশানোগ্রাফি) - সাবজেক্ট রিভিউ</span>
-				</div>
+		<article className="w-full">
+			{/* Breadcrumbs */ }
+			<Breadcrumbs title={ post.title.rendered } categories={ categories }/>
+
+			{/* Featured Image */ }
+			<div className="w-full flex justify-center mb-4">
+				<FeaturedImage id={ post.featured_media }/>
 			</div>
-			{/*<script type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@type": "BreadcrumbList",
-				"itemListElement": [{
-				"@type": "ListItem",
-				"position": 1,
-				"item": {
-				"@type": "WebSite",
-				"@id": "https://blog.shikkhaweb.com/",
-				"name": "Home"
-			}
-			},{
-				"@type": "ListItem",
-				"position": 2,
-				"item": {
-				"@type": "WebPage",
-				"@id": "https://blog.shikkhaweb.com/category/subject-review/",
-				"name": "সাবজেক্ট রিভিউ"
-			}
-			},{
-				"@type": "ListItem",
-				"position": 3,
-				"item": {
-				"@type": "WebPage",
-				"@id": "",
-				"name": "সমুদ্রবিজ্ঞান (ওশানোগ্রাফি) - সাবজেক্ট রিভিউ"
-			}
-			}    ]
-			}
-			</script>*/ }
-			<div className="container text-center">
-				<FeaturedImage id={ data[0].featured_media }/>
+
+			{/* Title */ }
+			<h1 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-6">
+				{ post.title.rendered }
+			</h1>
+
+			{/* Content */ }
+			<div className="prose dark:prose-invert mx-auto max-w-full break-words overflow-hidden">
+				<div dangerouslySetInnerHTML={ { __html: post.content.rendered } } className="post-content"/>
 			</div>
-			<div className="container mx-auto">
-				<h1 className="text-3xl font-bold text-center text-gray-800 dark:text-white">
-					{ data[0].title.rendered }
-				</h1>
-			</div>
-			<div
-				className="my-20">
-				<div dangerouslySetInnerHTML={ { __html: data[0].content.rendered } }/>
-			</div>
-		</div>
+		</article>
 	)
 }

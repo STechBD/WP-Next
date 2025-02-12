@@ -1,5 +1,6 @@
 import { JSX } from 'react'
 import Image from 'next/image'
+import { Media } from '@/app/_data/type';
 
 
 /**
@@ -10,7 +11,7 @@ import Image from 'next/image'
  */
 export default async function FeaturedImage({ id }: any): Promise<JSX.Element> {
 	const api: string = (process.env.API ?? '') + '/wp-json/wp/v2/media/' + id + '/'
-	const data = await fetch(api).then((res) => res.json())
+	const data: Media = await fetch(api).then((res) => res.json())
 
 	if (!data) {
 		return (
@@ -23,10 +24,10 @@ export default async function FeaturedImage({ id }: any): Promise<JSX.Element> {
 	return (
 		<Image
 			key={ data.id }
-			src={ data.media_details.sizes.medium.source_url ?? '/image/WP-Next.webp' }
+			src={ data.media_details?.sizes?.full.source_url ?? '/image/WP-Next.webp' }
 			alt={ data.title.rendered }
-			width={ data.media_details.sizes.full.width ?? 1200 }
-			height={ data.media_details.sizes.full.height ?? 628}
+			width={ data.media_details?.sizes?.full.width ?? 1200 }
+			height={ data.media_details?.sizes?.full.height ?? 628 }
 			loading="lazy"
 			className="rounded-tl-xl rounded-tr-xl"
 		/>
