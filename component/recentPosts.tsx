@@ -1,5 +1,5 @@
 import { JSX } from 'react'
-import { Post } from '@/app/_data/type'
+import { Post } from '@/data/type'
 import Link from 'next/link'
 
 
@@ -19,7 +19,7 @@ export default async function RecentPosts(): Promise<JSX.Element> {
 				{ posts.length > 0 ? (
 					posts.map((post: Post): JSX.Element => (
 						<li key={ post.id }>
-							<Link href={ '/' + post.slug } className="hover:text-gray-900 dark:hover:text-white">
+							<Link href={ '/public' + post.slug } className="hover:text-gray-900 dark:hover:text-white">
 								{ post.title.rendered }
 							</Link>
 						</li>

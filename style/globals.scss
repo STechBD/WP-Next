@@ -1,3 +1,5 @@
+@use "sass:color";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,23 +10,6 @@
 	--background-start-rgb: 214, 219, 220;
 	--background-end-rgb: 255, 255, 255;
 }
-
-/*@media (prefers-color-scheme: dark) {
-	:root {
-		--foreground-rgb: 255, 255, 255;
-		--background-start-rgb: 0, 0, 0;
-		--background-end-rgb: 0, 0, 0;
-	}
-}
-
-body {
-	color: rgb(var(--foreground-rgb));
-	background: linear-gradient(
-			to bottom,
-			transparent,
-			rgb(var(--background-end-rgb))
-	) rgb(var(--background-start-rgb));
-}*/
 
 
 /**
@@ -57,7 +42,6 @@ body {
 	cursor: grabbing;
 }
 
-// cursor design
 
 /* cursor design */
 .cursor {
@@ -534,13 +518,13 @@ $dark-pre-bg: #2d3748;
 
 	code {
 		font-size: 1rem;
-		background: lighten($light-border, 10%);
+		background: color.adjust($light-border, $lightness: 10%);
 		padding: 0.2rem 0.4rem;
 		border-radius: 4px;
 		font-family: monospace;
 
 		html.dark & {
-			background: darken($dark-border, 10%);
+			background: color.adjust($dark-border, $lightness: -10%);
 		}
 	}
 

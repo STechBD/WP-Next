@@ -1,10 +1,10 @@
 import { JSX } from 'react'
 import type { Metadata } from 'next'
 import Content from '@/app/[slug]/content'
-import { Post } from '@/app/_data/type'
-import Categories from '@/app/_component/categories'
-import Author from '@/app/_component/author'
-import RecentPosts from '@/app/_component/recentPosts'
+import { Post } from '@/data/type'
+import Categories from '@/component/categories'
+import Author from '@/component/author'
+import RecentPosts from '@/component/recentPosts'
 
 /**
  * Metadata object to change the title.

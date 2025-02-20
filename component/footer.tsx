@@ -4,7 +4,7 @@ import { JSX } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Script from 'next/script'
-import { Bounce } from '@/app/_component/animation'
+import { Bounce } from '@/component/animation'
 
 
 /**

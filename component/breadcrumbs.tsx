@@ -15,7 +15,7 @@ export default function Breadcrumbs({ title, categories }: {
 }) {
 	return (
 		<nav className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-			<Link href="/" className="hover:text-gray-900 dark:hover:text-white">Home</Link>
+			<Link href="/public" className="hover:text-gray-900 dark:hover:text-white">Home</Link>
 			<span className="mx-2">/</span>
 
 			{ categories.length > 0 && (

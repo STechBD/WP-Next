@@ -2,9 +2,9 @@
 
 import { JSX, useEffect } from 'react'
 import Cookie from 'js-cookie'
-import { State } from '@/app/_data/type'
+import { State } from '@/data/type'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLightMode } from '@/app/_context/reduxStore'
+import { setLightMode } from '@/context/reduxStore'
 
 
 /**

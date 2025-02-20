@@ -4,8 +4,8 @@ import { JSX } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useDispatch, useSelector } from 'react-redux'
-import { State } from '@/app/_data/type'
-import Mode from '@/app/_component/mode'
+import { State } from '@/data/type'
+import Mode from '@/component/mode'
 
 
 /**
@@ -29,7 +29,7 @@ export default function Header(): JSX.Element {
 							width={ 32 }
 							height={ 32 }
 						/>
-						<Link href="/" className="text-xl font-bold text-gray-900 dark:text-gray-100">
+						<Link href="/public" className="text-xl font-bold text-gray-900 dark:text-gray-100">
 							WP-Next
 						</Link>
 					</div>

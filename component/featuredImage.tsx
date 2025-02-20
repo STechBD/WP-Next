@@ -1,6 +1,6 @@
 import { JSX } from 'react'
 import Image from 'next/image'
-import { Media } from '@/app/_data/type';
+import { Media } from '@/data/type';
 
 
 /**

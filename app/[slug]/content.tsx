@@ -1,6 +1,6 @@
 import React from 'react'
-import FeaturedImage from '@/app/_component/featuredImage'
-import Breadcrumbs from '@/app/_component/breadcrumbs'
+import FeaturedImage from '@/component/featuredImage'
+import Breadcrumbs from '@/component/breadcrumbs'
 
 /**
  * Fetch post data from WordPress API.
