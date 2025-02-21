@@ -29,7 +29,7 @@ export default function Header(): JSX.Element {
 							width={ 32 }
 							height={ 32 }
 						/>
-						<Link href="/public" className="text-xl font-bold text-gray-900 dark:text-gray-100">
+						<Link href="/" className="text-xl font-bold text-gray-900 dark:text-gray-100">
 							WP-Next
 						</Link>
 					</div>

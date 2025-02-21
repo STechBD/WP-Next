@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import Content from '@/app/content'
+import Article from '@/component/article'
 import Hero from '@/app/hero'
 
 
@@ -21,6 +21,6 @@ export const metadata: Metadata = {
 export default function Page(): JSX.Element {
 	return (<>
 		<Hero/>
-		<Content/>
+		<Article page={ 1 } perPage={ 10 }/>
 	</>)
 }

@@ -25,7 +25,7 @@ export default async function FeaturedImage({ id }: any): Promise<JSX.Element> {
 		<Image
 			key={ data.id }
 			src={ data.media_details?.sizes?.full.source_url ?? '/image/WP-Next.webp' }
-			alt={ data.title.rendered }
+			alt={ data.title?.rendered ?? 'Featured Image' }
 			width={ data.media_details?.sizes?.full.width ?? 1200 }
 			height={ data.media_details?.sizes?.full.height ?? 628 }
 			loading="lazy"

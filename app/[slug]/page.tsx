@@ -30,7 +30,7 @@ export default async function Page({ params }: { params: { slug: string } }): Pr
 	const author = data.author
 
 	return (
-		<main className="container mx-auto max-w-screen-xl px-4 md:px-8 py-6 overflow-hidden">
+		<main className="container mx-auto px-4 md:px-8 py-6 overflow-hidden">
 			{/* Grid Layout */ }
 			<div className="grid grid-cols-1 md:grid-cols-12 gap-6">
 				{/* Left Sidebar */ }
