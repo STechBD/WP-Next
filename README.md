@@ -1,6 +1,6 @@
-# WP-Next - A Headless CMS with WordPress and Next.js
+# WP-Next - A WordPress-backed Blog Frontend using Next.js
 
-**WP-Next** is a simple and beautiful blog frontend using Next.js and WordPress as a headless CMS developed by
+**WP-Next** (aka **Wordpress-Next**) is a WordPress-backed simple and beautiful blog frontend using Next.js developed by
 **[S Technologies](https://www.stechbd.net)**. It is a fully responsive blog frontend that is easy to customize and use.
 It is built with Next.js, Tailwind CSS, and WordPress.
 
@@ -28,7 +28,7 @@ It is built with Next.js, Tailwind CSS, and WordPress.
 - Easy to customize
 - Fast loading
 - SEO friendly
-- Beautiful design
+- Beautiful UI
 - Dark mode
 - Pagination
 
@@ -86,10 +86,11 @@ It is built with Next.js, Tailwind CSS, and WordPress.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the GPLv3 License - see the [LICENSE](LICENSE) file for details.
 
 ## Credits
 
+- [React.js](https://react.dev)
 - [Next.js](https://nextjs.org)
 - [Tailwind CSS](https://tailwindcss.com)
 - [WordPress](https://wordpress.org)
@@ -116,7 +117,6 @@ See the [CHANGELOG](CHANGELOG.md) file for details.
 
 - Add search functionality
 - Add comments functionality
-- Add contact form functionality
 
 ## Security
 

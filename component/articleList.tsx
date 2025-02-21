@@ -28,7 +28,7 @@ export default function ArticleList({ data }: any): JSX.Element {
 							{ he.decode(post.title.rendered) }
 						</h2>
 						<p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-							{ excerpt }
+							{ he.decode(excerpt) }
 							<Link
 								href={ `/${ post.slug }` }
 								className="mt-4 text-blue-600 dark:text-blue-400 hover:underline"

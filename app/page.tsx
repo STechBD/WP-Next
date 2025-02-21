@@ -1,6 +1,8 @@
+import { JSX } from 'react'
 import type { Metadata } from 'next'
 import Article from '@/component/article'
 import Hero from '@/app/hero'
+import { getPostList } from '@/function/data'
 
 
 /**
@@ -18,9 +20,9 @@ export const metadata: Metadata = {
  * @return { JSX.Element }
  * @since 1.0.0
  */
-export default function Page(): JSX.Element {
+export default async function Page(): Promise<JSX.Element> {
 	return (<>
 		<Hero/>
-		<Article page={ 1 } perPage={ 10 }/>
+		<Article data={ await getPostList() }/>
 	</>)
 }

@@ -3,6 +3,41 @@
   "description": "WP-Next is a simple and beautiful blog frontend using Next.js and WordPress as a headless CMS developed by S Technologies.",
   "version": "1.0.0",
   "private": true,
+  "keywords": [
+    "javascript",
+    "typescript",
+    "reactjs",
+    "nextjs",
+    "stechbd",
+    "wp-next",
+    "aashemul"
+  ],
+  "license": "GPLv3",
+  "homepage": "https://wp-next.stechbd.net",
+  "support": {
+    "issues": "https://github.com/STechBD/WP-Next/issues",
+    "source": "https://github.com/STechBD/WP-Next",
+    "email": "product@stechbd.net",
+    "chat": "https://www.facebook.com/STechBD.Net",
+    "docs": "https://docs.stechbd.net/WP-Next",
+    "tickets": "https://cpanel.stechbd.net"
+  },
+  "authors": [
+    {
+      "name": "S Technologies",
+      "email": "product@stechbd.net",
+      "homepage": "https://www.stechbd.net",
+      "role": "Developer"
+    },
+    {
+      "name": "Md. Ashraful Alam Shemul",
+      "email": "aashemul@gmail.com",
+      "homepage": "https://www.shemul.com.bd",
+      "role": "Author"
+    }
+  ],
+  "minimum-stability": "stable",
+  "prefer-stable": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,14 +46,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.3.0",
-    "@types/js-cookie": "^3.0.4",
-    "@types/node": "20.4.8",
-    "@types/react": "18.2.18",
-    "@types/react-dom": "18.2.7",
-    "autoprefixer": "10.4.14",
     "dotenv": "^16.3.1",
-    "eslint": "8.46.0",
-    "eslint-config-next": "13.4.13",
     "he": "^1.2.0",
     "js-cookie": "^3.0.5",
     "motion": "^12.4.2",
@@ -29,9 +57,7 @@
     "react-dom": "18.2.0",
     "react-redux": "^9.1.2",
     "striptags": "^3.2.0",
-    "swr": "^2.2.5",
-    "tailwindcss": "3.3.3",
-    "typescript": "5.1.6"
+    "swr": "^2.2.5"
   },
   "devDependencies": {
     "@types/he": "^1.2.3",

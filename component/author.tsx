@@ -1,5 +1,6 @@
 import { JSX } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 
 /**
@@ -9,8 +10,8 @@ import Image from 'next/image'
  * @since 1.0.0
  */
 export default async function Author({ authorId }: { authorId: number }): Promise<JSX.Element> {
-	const response = await fetch(`${ process.env.API }/wp-json/wp/v2/users/${ authorId }`, { cache: 'no-store' })
-	const author = await response.json()
+	const response: Response = await fetch(`${ process.env.API }/wp-json/wp/v2/users/${ authorId }`)
+	const author: any = await response.json()
 
 	return (
 		<aside className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
@@ -24,9 +25,11 @@ export default async function Author({ authorId }: { authorId: number }): Promis
 					className="rounded-full w-12 h-12"
 				/>
 				<div>
-					<p className="text-sm font-medium text-gray-900 dark:text-white">
-						{ author.name }
-					</p>
+					<Link href={ `/author/${ author.slug }` }>
+						<p className="text-sm font-medium text-gray-900 dark:text-white">
+							{ author.name || 'No name available' }
+						</p>
+					</Link>
 					<p className="text-xs text-gray-600 dark:text-gray-400">
 						{ author.description || 'No bio available' }
 					</p>
