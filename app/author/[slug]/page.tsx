@@ -7,12 +7,12 @@ import { getPostList } from '@/function/data'
 /**
  * Metadata object to change the title.
  *
- * @param title { string } - The title of the page.
+ * @param title { string } Title of the page.
  * @return { JSX.Element }
  * @since 1.0.0
  */
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-	const { slug } = params
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+	const slug: string = (await params).slug
 	return { title: 'Author: ' + (await getPostList('author', slug))[1] }
 }
 
@@ -20,13 +20,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 /**
  * Page component to show the article content.
  *
- * @param params { slug: string } - The slug of the author.
+ * @param params { slug: string } Slug of the author.
  * @since 1.0.0
  */
-export default async function Page({ params }: { params: { slug: string } }): Promise<JSX.Element> {
-	const slug: string = params.slug
+export default async function Page({ params }: { params: Promise<{ slug: string }> }): Promise<JSX.Element> {
+	const slug: string = (await params).slug
 
-	return (<>
+	return (
 		<Article page={ 1 } type="author" data={ await getPostList('author', slug) }/>
-	</>)
+	)
 }

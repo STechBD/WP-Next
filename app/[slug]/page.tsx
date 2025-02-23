@@ -6,28 +6,32 @@ import Categories from '@/component/categories'
 import Author from '@/component/author'
 import RecentPosts from '@/component/recentPosts'
 
+
 /**
  * Metadata object to change the title.
  *
- * @param title
- * @return { JSX.Element }
+ * @param title { string } Title of the page.
+ * @return { Metadata } Metadata object.
  * @since 1.0.0
  */
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-	const { slug } = params
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+	const slug: string = (await params).slug
 	const data = await fetch(process.env.API + '/wp-json/wp/v2/posts?slug=' + slug).then((res: Response) => res.json())
 	return { title: data[0].title.rendered }
 }
 
+
 /**
- * Page method to show the article content.
- * @param params
- * @constructor
+ * Page component to show the article content.
+ *
+ * @param params { Promise<{ slug: string }> } Slug of the post.
+ * @return { JSX.Element } The Page component.
+ * @since 1.0.0
  */
-export default async function Page({ params }: { params: { slug: string } }): Promise<JSX.Element> {
-	const slug: string = params.slug
+export default async function Page({ params }: { params: Promise<{ slug: string }> }): Promise<JSX.Element> {
+	const slug: string = (await params).slug
 	const data: Post = (await (await fetch(process.env.API + '/wp-json/wp/v2/posts?slug=' + slug)).json())[0]
-	const author = data.author
+	const author: number = data.author
 
 	return (
 		<main className="container mx-auto px-4 md:px-8 py-6 overflow-hidden">
@@ -40,7 +44,7 @@ export default async function Page({ params }: { params: { slug: string } }): Pr
 
 				{/* Main Content */ }
 				<div className="md:col-span-6 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg">
-					<Content slug={ params.slug }/>
+					<Content slug={ slug }/>
 				</div>
 
 				{/* Right Sidebar */ }
