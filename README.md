@@ -2,7 +2,7 @@
 
 **WP-Next** (aka **Wordpress-Next**) is a WordPress-backed simple and beautiful blog frontend using Next.js developed by
 **[S Technologies](https://www.stechbd.net)**. It is a fully responsive blog frontend that is easy to customize and use.
-It is built with Next.js, Tailwind CSS, and WordPress.
+It is built with Next.js and Tailwind CSS by using WordPress REST API.
 
 ## Table of Contents
 
@@ -28,9 +28,10 @@ It is built with Next.js, Tailwind CSS, and WordPress.
 - Easy to customize
 - Fast loading
 - SEO friendly
-- Beautiful UI
-- Dark mode
+- Simple and beautiful UI
+- Dark and light mode
 - Pagination
+- Redux.js for state management
 
 ## Installation
 

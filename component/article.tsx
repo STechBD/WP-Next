@@ -18,8 +18,6 @@ export default async function Article({ data, type, page }: {
 	type?: 'category' | 'author' | 'tag',
 	page?: number,
 }): Promise<JSX.Element> {
-	// Add pagination params
-	const api = `&per_page=&page=`
 
 	if (!data || data[0].length === 0) {
 		return (

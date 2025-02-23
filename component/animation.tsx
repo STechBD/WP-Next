@@ -46,7 +46,7 @@ export function useIntersectionObserver(ref: React.MutableRefObject<any>, thresh
  * @param { string } style - The style of the component.
  * @param { React.ReactNode } children - The children of the component received.
  * @returns { JSX.Element } - The animated component.
- * @since 3.0.0
+ * @since 1.0.0
  */
 export function Bounce({ design, hover = false, children, }: {
 	design?: string,

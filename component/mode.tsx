@@ -11,7 +11,7 @@ import { setLightMode } from '@/context/reduxStore'
  * Mode Switcher component.
  *
  * @returns { JSX.Element } The Mode Switcher Panel component.
- * @since 3.0.0
+ * @since 1.0.0
  */
 export default function Mode(): JSX.Element {
 	const dispatch = useDispatch()

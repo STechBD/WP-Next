@@ -1,6 +1,6 @@
 {
   "name": "wp-next",
-  "description": "WP-Next is a simple and beautiful blog frontend using Next.js and WordPress as a headless CMS developed by S Technologies.",
+  "description": "WP-Next is a WordPress-backed simple and beautiful blog frontend using Next.js developed by S Technologies.",
   "version": "1.0.0",
   "private": true,
   "keywords": [

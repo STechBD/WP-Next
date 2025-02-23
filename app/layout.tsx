@@ -12,7 +12,7 @@ import Footer from '@/component/footer'
  * The font family for the whole app.
  *
  * @see https://fonts.google.com/specimen/Inter
- * @since 3.0.0
+ * @since 1.0.0
  */
 const inter: NextFont = Inter({ subsets: [ 'latin' ] })
 
@@ -21,7 +21,7 @@ const inter: NextFont = Inter({ subsets: [ 'latin' ] })
  * The metadata setup for SEO.
  *
  * @returns { Metadata } Metadata setup for the SEO.
- * @since 3.0.0
+ * @since 1.0.0
  */
 export const metadata: Metadata = {
 	title: {
@@ -264,12 +264,12 @@ export const metadata: Metadata = {
  * The Root Layout for the whole website.
  *
  * @returns { JSX.Element } Root layout for the whole website.
- * @since 3.0.0
+ * @since 1.0.0
  */
-export default function RootLayout({ children, }: { children: React.ReactNode }): JSX.Element {
+export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {
 	return (
 		<html lang="en">
-		<body className={ inter.className + ' dark:bg-gray-900' }>
+		<body className={ `${ inter.className } dark:bg-gray-900` }>
 		<ReduxProvider>
 			<Header/>
 			<main className="min-h-screen">
