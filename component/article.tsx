@@ -18,10 +18,9 @@ export default async function Article({ data, type, page }: {
 	type?: 'category' | 'author' | 'tag',
 	page?: number,
 }): Promise<JSX.Element> {
-
 	if (!data || data[0].length === 0) {
 		return (
-			<main className="flex min-h-screen flex-col justify-between p-24">
+			<main className="flex min-h-screen flex-col justify-between px-8 py-20 lg:p-24">
 				<div className="container mx-auto p-4">
 					<h1 className="text-6xl font-bold text-center text-gray-800 dark:text-white">
 						No Posts Found
@@ -41,7 +40,7 @@ export default async function Article({ data, type, page }: {
 	else if (type === 'tag') title = `Tag: ${ data[1] }`
 
 	return (
-		<main className="flex min-h-screen flex-col justify-between p-24">
+		<main className="flex min-h-screen flex-col justify-between px-8 py-20 lg:p-24">
 			<div className="container mx-auto p-4">
 				<h1 className="text-5xl font-bold text-center text-gray-800 dark:text-white">
 					<strong>
@@ -49,7 +48,9 @@ export default async function Article({ data, type, page }: {
 					</strong>
 				</h1>
 			</div>
-			<div className="mb-32 grid text-center sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
+			
+			{/* Article List */ }
+			<div className="mb-32 grid text-center grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
 				<ArticleList data={ data[0] }/>
 			</div>
 
