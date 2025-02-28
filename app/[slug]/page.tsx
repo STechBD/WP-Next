@@ -43,7 +43,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 				</div>
 
 				{/* Main Content */ }
-				<div className="md:col-span-6 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-lg">
+				<div className="md:col-span-6 bg-white dark:bg-gray-900 px-2 py-6 lg:p-6 rounded-lg shadow-lg">
 					<Content slug={ slug }/>
 				</div>
 

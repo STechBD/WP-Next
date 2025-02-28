@@ -31,6 +31,7 @@ const fetchPost = async (slug: string): Promise<any> => {
  */
 export default async function Content({ slug }: { slug: string }): Promise<JSX.Element> {
 	let post
+	
 	try {
 		post = await fetchPost(slug)
 	} catch (error) {

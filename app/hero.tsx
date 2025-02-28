@@ -79,10 +79,12 @@ export default function Hero(): JSX.Element {
 					<div
 						className="relative group inline-flex justify-center items-center gap-x-3.5 text-center bg-white border hover:border-gray-300 shadow-sm font-mono text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition p-2 pl-4 dark:bg-slate-900 dark:border-gray-800 dark:hover:border-gray-600 dark:shadow-slate-700/[.7] dark:text-white dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
 					>
-						$ { command }
+						<span className="break-all text-xs">
+							$ { command }
+						</span>
 						<button
 							onClick={ (): Promise<void> => copyCode(command) }
-							className="flex justify-center items-center rounded-md w-20 h-7 gap-2 bg-gradient-to-tl from-blue-600 to-violet-600 hover:from-violet-600 hover:to-blue-600 border border-transparent text-white"
+							className="flex justify-center items-center rounded-md h-7 px-2 gap-2 bg-gradient-to-tl from-blue-600 to-violet-600 hover:from-violet-600 hover:to-blue-600 border border-transparent text-white"
 						>
 							{ copied ? 'Copied!' : 'Copy' }
 							<svg className="w-3.5 h-3.5 group-hover:rotate-6 transition" width="16" height="16"

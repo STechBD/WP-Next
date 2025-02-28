@@ -1,18 +1,20 @@
+import { JSX } from 'react'
 import Link from 'next/link'
 
+
 /**
- * Breadcrumb Component
+ * Breadcrumb Component.
  * Dynamically generates breadcrumbs from categories and post title.
  *
- * @param {string} title - Post title
- * @param {Array<{ id: number; name: string }>} categories - Post categories
- * @return {JSX.Element}
+ * @param { string } title - Post title
+ * @param { Array<{ id: number; name: string, slug: string }> } categories - Post categories
+ * @return { JSX.Element }
  * @since 1.0.0
  */
 export default function Breadcrumbs({ title, categories }: {
 	title: string;
-	categories: { id: number; name: string }[]
-}) {
+	categories: { id: number; name: string, slug: string }[]
+}): JSX.Element {
 	return (
 		<nav className="text-gray-600 dark:text-gray-400 text-sm mb-4">
 			<Link href="/public" className="hover:text-gray-900 dark:hover:text-white">Home</Link>
@@ -22,8 +24,10 @@ export default function Breadcrumbs({ title, categories }: {
 				<>
 					{ categories.map((category, index) => (
 						<span key={ category.id }>
-							<Link href={ `/category/${ category.id }` }
-							      className="hover:text-gray-900 dark:hover:text-white">
+							<Link
+								href={ `/category/${ category.slug }` }
+								className="hover:text-gray-900 dark:hover:text-white"
+							>
 								{ category.name }
 							</Link>
 							{ index < categories.length - 1 && <span className="mx-2">/</span> }
@@ -33,7 +37,9 @@ export default function Breadcrumbs({ title, categories }: {
 				</>
 			) }
 
-			<span className="text-gray-800 dark:text-gray-300">{ title }</span>
+			<span className="text-gray-800 dark:text-gray-300">
+				{ title }
+			</span>
 		</nav>
 	)
 }
