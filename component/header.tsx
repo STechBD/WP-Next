@@ -1,11 +1,13 @@
 'use client'
 
-import { JSX } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { useDispatch, useSelector } from 'react-redux'
 import { State } from '@/data/type'
 import Mode from '@/component/mode'
+import { Dispatch } from 'redux'
+import { JSX, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import config from '@/wp-next.config'
 
 
 /**
@@ -15,8 +17,13 @@ import Mode from '@/component/mode'
  * @since 1.0.0
  */
 export default function Header(): JSX.Element {
-	const dispatch = useDispatch()
-	const lightMode = useSelector((state: State) => state.lightMode)
+	const dispatch: Dispatch = useDispatch()
+	const lightMode: boolean = useSelector((state: State): boolean => state.lightMode)
+	const [ menu, setMenu ] = useState(true)
+
+	const toggleMenu = (): void => {
+		setMenu(!menu)
+	}
 
 	return (
 		<header className="bg-white dark:bg-gray-800 shadow sticky top-0 z-50">
@@ -30,7 +37,7 @@ export default function Header(): JSX.Element {
 							height={ 32 }
 						/>
 						<Link href="/" className="text-xl font-bold text-gray-900 dark:text-gray-100">
-							WP-Next
+							{ config.title }
 						</Link>
 					</div>
 					<div className="hidden md:flex items-center space-x-4">
@@ -41,6 +48,19 @@ export default function Header(): JSX.Element {
 						<Link href="/contact" className="text-gray-900 dark:text-gray-100">
 							Contact
 						</Link>
+
+						<button onClick={ toggleMenu }>
+							<span className="sr-only">
+								Open main menu
+							</span>
+							<svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
+							     stroke="currentColor" aria-hidden="true"
+							>
+								<path strokeLinecap="round" strokeLinejoin="round"
+								      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5">
+								</path>
+							</svg>
+						</button>
 					</div>
 				</div>
 			</div>

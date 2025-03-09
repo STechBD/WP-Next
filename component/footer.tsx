@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Script from 'next/script'
 import { Bounce } from '@/component/animation'
+import config from '@/wp-next.config';
 
 
 /**
@@ -346,14 +347,7 @@ export default function Footer(): JSX.Element {
 					<div
 						className="flex mt-4 justify-center text-sm text-gray-700 lg:justify-start dark:text-gray-300"
 					>
-				        <span>
-					        © 2013-{ new Date().getFullYear().toString().slice(-2) } <Link
-					        href="https://www.stechbd.net">
-						        <strong>
-							        S Technologies
-								</strong>
-							</Link>. All Rights Reserved.
-						</span>
+						<span dangerouslySetInnerHTML={ { __html: config.footer.copyright } }/>
 					</div>
 					<div className="social flex mt-4 space-x-5 justify-center lg:mt-0 lg:justify-end">
 						<Link href="https://www.facebook.com/STechBD.Net" target="_blank" className="text-gray-700">
