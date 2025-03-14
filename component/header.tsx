@@ -37,7 +37,7 @@ export default function Header(): JSX.Element {
 							height={ 32 }
 						/>
 						<Link href="/" className="text-xl font-bold text-gray-900 dark:text-gray-100">
-							{ config.title }
+							{ config.header.title }
 						</Link>
 					</div>
 					<div className="hidden md:flex items-center space-x-4">
@@ -49,7 +49,7 @@ export default function Header(): JSX.Element {
 							Contact
 						</Link>
 
-						<button onClick={ toggleMenu }>
+						<button onClick={ toggleMenu } className="cursor-pointer">
 							<span className="sr-only">
 								Open main menu
 							</span>

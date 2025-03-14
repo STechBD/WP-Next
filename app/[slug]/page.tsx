@@ -38,17 +38,17 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 			{/* Grid Layout */ }
 			<div className="grid grid-cols-1 md:grid-cols-12 gap-6">
 				{/* Left Sidebar */ }
-				<div className="hidden md:block md:col-span-3">
+				<div className="order-2 md:order-1 md:col-span-3">
 					<Author authorId={ author }/>
 				</div>
 
 				{/* Main Content */ }
-				<div className="md:col-span-6 bg-white dark:bg-gray-900 px-2 py-6 lg:p-6 rounded-lg shadow-lg">
+				<div className="md:order-2 md:col-span-6 bg-white dark:bg-gray-900 py-6 lg:p-6 rounded-lg shadow-lg">
 					<Content slug={ slug }/>
 				</div>
 
 				{/* Right Sidebar */ }
-				<div className="hidden md:block md:col-span-3 space-y-6">
+				<div className="order-3 md:col-span-3 space-y-6">
 					<RecentPosts/>
 					<Categories/>
 				</div>

@@ -31,7 +31,7 @@ const fetchPost = async (slug: string): Promise<any> => {
  */
 export default async function Content({ slug }: { slug: string }): Promise<JSX.Element> {
 	let post
-	
+
 	try {
 		post = await fetchPost(slug)
 	} catch (error) {
@@ -69,7 +69,7 @@ export default async function Content({ slug }: { slug: string }): Promise<JSX.E
 
 			{/* Content */ }
 			<div className="prose dark:prose-invert mx-auto max-w-full break-words overflow-hidden">
-				<div dangerouslySetInnerHTML={ { __html: post.content.rendered } } className="post-content"/>
+				<div dangerouslySetInnerHTML={ { __html: post.content.rendered } } className="post-content p-4 md:p-6"/>
 			</div>
 		</article>
 	)

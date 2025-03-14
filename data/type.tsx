@@ -1,7 +1,7 @@
 /**
  * Interface definition for the state from Redux.
  *
- * @interface PostList
+ * @interface State
  *
  * @since 1.0.0
  */

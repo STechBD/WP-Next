@@ -4,8 +4,9 @@ import { JSX } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Script from 'next/script'
-import { Bounce } from '@/component/animation'
-import config from '@/wp-next.config';
+import { State } from '@/data/type'
+import config from '@/wp-next.config'
+import { useSelector } from 'react-redux'
 
 
 /**
@@ -15,182 +16,8 @@ import config from '@/wp-next.config';
  * @since 1.0.0
  */
 export default function Footer(): JSX.Element {
-	const website = [
-		{
-			title: 'Domain Name Registration',
-			link: '/domain',
-		},
-		{
-			title: 'Shared Hosting',
-			link: '/shared-hosting',
-		},
-		{
-			title: 'Reseller Hosting',
-			link: '/reseller-hosting',
-		},
-		{
-			title: 'Unmanaged VPS',
-			link: '/unmanaged-vps',
-		},
-		{
-			title: 'Managed VPS',
-			link: '/managed-vps',
-		},
-		{
-			title: 'Dedicated Server',
-			link: '/dedicated-server',
-		},
-		{
-			title: 'SSL Certificate',
-			link: '/ssl-certificate',
-		},
-		{
-			title: 'Server Information',
-			link: '/server-info',
-		},
-	]
-	const product = [
-		{
-			title: 'Shunno Programming Language 🎉',
-			link: 'https://shunno.stechbd.net',
-		},
-		{
-			title: 'Britto AI 🎉',
-			link: 'https://britto.stechbd.net',
-		},
-		{
-			title: 'Fishtock 🎉',
-			link: 'https://fishtock.stechbd.net',
-		},
-		{
-			title: 'Install Express 🎉',
-			link: '/product/Install-Express',
-		},
-		{
-			title: 'CookieCons',
-			link: '/product/CookieCons',
-		},
-		{
-			title: 'ProjectPress',
-			link: '/product/ProjectPress',
-		},
-		{
-			title: 'S PHP Engine',
-			link: '/product/S-PHP-Engine',
-		},
-		{
-			title: 'S Template Engine',
-			link: '/product/S-Template-Engine',
-		},
-		{
-			title: 'S Database Explorer',
-			link: '/product/S-Database-Explorer',
-		},
-		{
-			title: 'S Number Manager',
-			link: '/product/S-Number-Manager',
-		},
-		{
-			title: 'PyWeb',
-			link: '/product/PyWeb',
-		},
-		{
-			title: 'ViewMD',
-			link: '/product/ViewMD',
-		},
-	]
-	const service = [
-		{
-			title: 'AI App Development 🎉',
-			link: '/ai-development',
-		},
-		{
-			title: 'Web App Development',
-			link: '/web-development',
-		},
-		{
-			title: 'Readymade Website Development',
-			link: '/readymade-website',
-		},
-		{
-			title: 'School Management System',
-			link: '/school-management',
-		},
-		{
-			title: 'Android App Development',
-			link: '/android-development',
-		},
-		{
-			title: 'iOS App Development',
-			link: '/ios-development',
-		},
-		{
-			title: 'Windows App Development',
-			link: '/windows-development',
-		},
-		{
-			title: 'UI/UX Design',
-			link: '/ui-ux-development',
-		},
-		{
-			title: 'Search Engine Optimization',
-			link: '/seo',
-		},
-	]
-	const company = [
-		{
-			title: 'About S Technologies',
-			link: '/about',
-		},
-		{
-			title: 'Blog',
-			link: '/blog',
-		},
-		{
-			title: 'Research and Development Wing',
-			link: '/rnd',
-		},
-		{
-			title: 'S Technologies AI',
-			link: 'https://ai.stechbd.net',
-		},
-		{
-			title: 'Client Panel',
-			link: 'https://cpanel.stechbd.net',
-		},
-		{
-			title: 'Careers',
-			link: '/careers',
-		},
-		{
-			title: 'GitHub',
-			link: 'https://github.com/STechBD',
-		},
-		{
-			title: 'Contact Us',
-			link: '/contact',
-		},
-		{
-			title: 'Privacy Policy',
-			link: '/privacy',
-		},
-		{
-			title: 'Terms of Service',
-			link: '/terms',
-		},
-		{
-			title: 'Disclaimer',
-			link: '/disclaimer',
-		},
-		{
-			title: 'Refund Policy',
-			link: '/refund',
-		},
-		{
-			title: 'Sitemap',
-			link: '/sitemap',
-		},
-	]
+	const lightMode: boolean = useSelector((state: State) => state.lightMode)
+
 
 	return (<>
 		<footer className="relative bg-gray-100 dark:bg-gray-900">
@@ -198,15 +25,13 @@ export default function Footer(): JSX.Element {
 				<div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4 lg:grid-cols-6">
 					<div className="col-span-2 mb-6 grid grid-cols-3 justify-center">
 						<div className="flext justify-end">
-							<Bounce hover={ true }>
-								<Image
-									src="/image/S-Technologies-Icon-Light.svg"
-									className="mr-3 text-right"
-									alt="S Technologies Logo"
-									height="100"
-									width="100"
-								/>
-							</Bounce>
+							<Image
+								src={ config.footer.logo[lightMode ? 'light' : 'dark'].src }
+								className="mr-3 text-right"
+								alt={ config.footer.logo[lightMode ? 'light' : 'dark'].alt }
+								height="100"
+								width="100"
+							/>
 						</div>
 						<div className="col-span-2">
 							<div className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white mb-3">
@@ -265,82 +90,29 @@ export default function Footer(): JSX.Element {
 							</div>
 						</div>
 					</div>
-					<div>
-						<h2 className="mb-6 font-semibold text-gray-900 uppercase dark:text-white">
-							<strong>
-								Website
-							</strong>
-						</h2>
-						<ul className="text-gray-600 text-sm dark:text-gray-400 font-medium">
-							{ website.map((item, index) => (
-								<li key={ index } className="mb-2">
-									<Link
-										href={ item.link }
-										target={ item.link.startsWith('http') ? '_blank' : '' }
-									>
-										{ item.title }
-									</Link>
-								</li>
-							)) }
-						</ul>
-					</div>
-					<div>
-						<h2 className="mb-6 font-semibold text-gray-900 uppercase dark:text-white">
-							<strong>
-								Product
-							</strong>
-						</h2>
-						<ul className="text-gray-600 text-sm dark:text-gray-400 font-medium">
-							{ product.map((item, index) => (
-								<li key={ index } className="mb-2">
-									<Link
-										href={ item.link }
-										target={ item.link.startsWith('http') ? '_blank' : '' }
-									>
-										{ item.title }
-									</Link>
-								</li>
-							)) }
-						</ul>
-					</div>
-					<div>
-						<h2 className="mb-6 font-semibold text-gray-900 uppercase dark:text-white">
-							<strong>
-								Service
-							</strong>
-						</h2>
-						<ul className="text-gray-600 text-sm dark:text-gray-400 font-medium">
-							{ service.map((item, index) => (
-								<li key={ index } className="mb-2">
-									<Link
-										href={ item.link }
-										target={ item.link.startsWith('http') ? '_blank' : '' }
-									>
-										{ item.title }
-									</Link>
-								</li>
-							)) }
-						</ul>
-					</div>
-					<div>
-						<h2 className="mb-6 font-semibold text-gray-900 uppercase dark:text-white">
-							<strong>
-								Company
-							</strong>
-						</h2>
-						<ul className="text-gray-600 text-sm dark:text-gray-400 font-medium">
-							{ company.map((item, index) => (
-								<li key={ index } className="mb-2">
-									<Link
-										href={ item.link }
-										target={ item.link.startsWith('http') ? '_blank' : '' }
-									>
-										{ item.title }
-									</Link>
-								</li>
-							)) }
-						</ul>
-					</div>
+					{ config.footer.menu.map((item, index) => {
+						if (index > 3) return
+
+						return <div key={ index }>
+							<h2 className="mb-6 font-semibold text-gray-900 uppercase dark:text-white">
+								<strong>
+									{ item.label }
+								</strong>
+							</h2>
+							<ul className="text-gray-600 text-sm dark:text-gray-400 font-medium">
+								{ item.items.map((item, index) => (
+									<li key={ index } className="mb-2">
+										<Link
+											href={ item.link }
+											target={ item.link.startsWith('http') ? '_blank' : '' }
+										>
+											{ item.label }
+										</Link>
+									</li>
+								)) }
+							</ul>
+						</div>
+					}) }
 				</div>
 				<hr className="dark:border-t-gray-300"/>
 				<div className="px-4 py-6 md:flex md:items-center md:justify-between">
