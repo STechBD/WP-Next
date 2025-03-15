@@ -1,5 +1,6 @@
 import { JSX } from 'react'
 import Link from 'next/link'
+import { Category } from '@/data/type'
 
 
 /**
@@ -7,22 +8,24 @@ import Link from 'next/link'
  * Dynamically generates breadcrumbs from categories and post title.
  *
  * @param { string } title - Post title
- * @param { Array<{ id: number; name: string, slug: string }> } categories - Post categories
+ * @param { Category[] } categories - Post categories
  * @return { JSX.Element }
  * @since 1.0.0
  */
 export default function Breadcrumbs({ title, categories }: {
-	title: string;
-	categories: { id: number; name: string, slug: string }[]
+	title: string
+	categories: Category[]
 }): JSX.Element {
 	return (
-		<nav className="text-gray-600 dark:text-gray-400 text-sm mb-4">
-			<Link href="/public" className="hover:text-gray-900 dark:hover:text-white">Home</Link>
+		<nav className="px-4 md:px-0 text-gray-600 dark:text-gray-400 text-sm mb-4">
+			<Link href="/" className="hover:text-gray-900 dark:hover:text-white">
+				Home
+			</Link>
 			<span className="mx-2">/</span>
 
 			{ categories.length > 0 && (
 				<>
-					{ categories.map((category, index) => (
+					{ categories.map((category: Category, index: number): JSX.Element => (
 						<span key={ category.id }>
 							<Link
 								href={ `/category/${ category.slug }` }

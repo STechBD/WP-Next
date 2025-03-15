@@ -58,12 +58,12 @@ export default async function Content({ slug }: { slug: string }): Promise<JSX.E
 			<Breadcrumbs title={ he.decode(post.title.rendered) } categories={ categories }/>
 
 			{/* Featured Image */ }
-			<div className="w-full flex justify-center mb-4">
+			<div className="w-full px-4 md:px-0 flex justify-center mb-4">
 				<FeaturedImage id={ post.featured_media }/>
 			</div>
 
 			{/* Title */ }
-			<h1 className="text-4xl font-bold text-center text-gray-800 dark:text-white mb-6">
+			<h1 className="text-3xl md:text-4xl leading-[1.2] px-4 md:px-0 font-bold text-center text-gray-800 dark:text-white mb-6">
 				{ he.decode(post.title.rendered) }
 			</h1>
 

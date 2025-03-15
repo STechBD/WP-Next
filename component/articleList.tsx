@@ -24,7 +24,7 @@ export default function ArticleList({ data }: any): JSX.Element {
 				>
 					<FeaturedImage className="rounded-tl-xl rounded-tr-xl" id={ post.featured_media }/>
 					<div className="px-5 py-4">
-						<h2 className="mt-2 text-xl font-bold text-gray-800 dark:text-white">
+						<h2 className="mt-2 text-md font-bold text-gray-800 dark:text-white">
 							{ he.decode(post.title.rendered) }
 						</h2>
 						<p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
@@ -33,7 +33,7 @@ export default function ArticleList({ data }: any): JSX.Element {
 								href={ `/${ post.slug }` }
 								className="mt-4 text-blue-600 dark:text-blue-400 hover:underline"
 							>
-								Read more
+								Read more →
 							</Link>
 						</p>
 					</div>

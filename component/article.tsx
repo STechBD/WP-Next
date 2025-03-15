@@ -8,7 +8,7 @@ import ArticleList from '@/component/articleList'
  * Supports pagination and limit per page.
  *
  * @param { string } data - The filter value (category slug, author ID, or tag ID).
- * @param { string } type - The filter type: "category", "author", or "tag".
+ * @param { 'category' | 'author' | 'tag' } type - The filter type: "category", "author", or "tag".
  * @param { number } page - The current page number.
  * @return { Promise<JSX.Element> }
  * @since 1.0.0
@@ -42,7 +42,7 @@ export default async function Article({ data, type, page }: {
 	return (
 		<main className="flex min-h-screen flex-col justify-between px-4 py-20 lg:p-24">
 			<div className="container mx-auto p-4">
-				<h1 className="text-5xl font-bold text-center text-gray-800 dark:text-white">
+				<h1 className="text-3xl md:text-4xl font-bold text-center text-gray-800 dark:text-white">
 					<strong>
 						{ title }
 					</strong>
@@ -59,15 +59,15 @@ export default async function Article({ data, type, page }: {
 				{ page && page > 1 && (<>
 					<Link
 						href={ `?type=${ type ?? '' }&slug=&page=${ page - 1 }` }
-						className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-md hover:bg-gray-300 dark:hover:bg-gray-600"
+						className="px-6 py-3 bg-gray-300 dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg shadow-md transition hover:bg-gray-400 dark:hover:bg-gray-600"
 					>
-						Previous
+						← Previous
 					</Link>
 					<Link
 						href={ `?type=${ type ?? '' }&slug=&page=${ page + 1 }` }
-						className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+						className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md transition hover:bg-blue-700"
 					>
-						Next
+						Next →
 					</Link>
 				</>) }
 			</div>

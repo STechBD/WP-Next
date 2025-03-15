@@ -1,65 +1,11 @@
 import { JSX } from 'react'
-
-
-interface Config {
-	label: string;
-	tagline: string;
-	favicon: string;
-	description: string;
-	url: string;
-	baseUrl: string;
-	organizationName: string;
-	projectName: string;
-	presets: any[];
-	header: {
-		title: string
-		navbar: {
-			label: string;
-			logo: {
-				light: {
-					alt: string;
-					src: string;
-				};
-				dark: {
-					alt: string;
-					src: string;
-				};
-			};
-			items: {
-				label: string;
-				link: string;
-			}[];
-		};
-	};
-	footer: {
-		logo: {
-			light: {
-				src: string;
-				alt: string;
-			};
-			dark: {
-				src: string;
-				alt: string;
-			};
-		};
-		heading: string;
-		description: string | JSX.Element;
-		menu: {
-			label: string;
-			items: {
-				label: string;
-				link: string;
-			}[];
-		}[];
-		copyright: string | JSX.Element;
-	};
-}
+import { Config } from '@/data/type'
 
 
 const config: Config = {
 	title: 'WP-Next Blog',
 	tagline: 'WP-Next is cool',
-	favicon: 'image/favicon.ico',
+	favicon: '/favicon.ico',
 	description: 'WP-Next is a cool framework for building websites with WordPress and Next.js.',
 
 	// Set the production url of your site here
@@ -83,23 +29,26 @@ const config: Config = {
 			logo: {
 				light: {
 					alt: 'WP-Next Logo',
-					src:
-						'image/WP-Next-Logo-Light.svg',
+					src: '/image/WP-Next-Logo-Light.svg',
 				},
 				dark: {
 					alt: 'WP-Next Logo',
-					src:
-						'image/WP-Next-Logo-Dark.svg',
+					src: '/image/WP-Next-Logo-Dark.svg',
 				},
 			},
 			items: [
 				{
-					link: '/about',
-					label: 'About',
+					label: 'Home',
+					link: '/',
+					disabled: 'desktop',
 				},
 				{
-					link: '/privacy',
+					label: 'About',
+					link: 'https://www.stechbd.net/product/WP-Next',
+				},
+				{
 					label: 'Privacy',
+					link: 'https://www.stechbd.net/privacy',
 				},
 			],
 		},
@@ -107,21 +56,21 @@ const config: Config = {
 	footer: {
 		logo: {
 			light: {
-				src: 'image/S-Technologies-Icon-Light.svg',
+				src: '/image/S-Technologies-Icon-Light.svg',
 				alt: 'S Technologies Logo',
 			},
 			dark: {
-				src: 'image/S-Technologies-Icon-Light.svg',
+				src: '/image/S-Technologies-Icon-Light.svg',
 				alt: 'S Technologies Logo',
 			},
 		},
 		heading: 'S Technologies',
 		description: <>
 			<span
-				className="text-white bg-primary"><strong>S Technologies</strong> (<strong>STechBD.Net</strong>)</span>
-			is a research-based technology company in Bangladesh. It was founded in 2013. It provides services like
-			domain registration, web hosting, web servers, software development, AI model development, software as a
-			service (SaaS), UI/UX design, SEO, business solutions, etc. <span
+				className="text-white bg-primary"><strong>S Technologies</strong> (<strong>STechBD.Net</strong>)
+			</span> is a research-based technology company in Bangladesh. It was founded in 2013. It provides services
+			like domain registration, web hosting, web servers, software development, AI model development, software as
+			a service (SaaS), UI/UX design, SEO, business solutions, etc. <span
 			className="text-white bg-primary"><strong>STechnologies</strong></span> has been working on the research of
 			new technologies, especially artificial intelligence, and developing new products.
 		</>,
@@ -131,35 +80,35 @@ const config: Config = {
 				items: [
 					{
 						label: 'Domain Name Registration',
-						link: '/domain',
+						link: 'https://www.stechbd.net/domain',
 					},
 					{
 						label: 'Shared Hosting',
-						link: '/shared-hosting',
+						link: 'https://www.stechbd.net/shared-hosting',
 					},
 					{
 						label: 'Reseller Hosting',
-						link: '/reseller-hosting',
+						link: 'https://www.stechbd.net/reseller-hosting',
 					},
 					{
 						label: 'Unmanaged VPS',
-						link: '/unmanaged-vps',
+						link: 'https://www.stechbd.net/unmanaged-vps',
 					},
 					{
 						label: 'Managed VPS',
-						link: '/managed-vps',
+						link: 'https://www.stechbd.net/managed-vps',
 					},
 					{
 						label: 'Dedicated Server',
-						link: '/dedicated-server',
+						link: 'https://www.stechbd.net/dedicated-server',
 					},
 					{
 						label: 'SSL Certificate',
-						link: '/ssl-certificate',
+						link: 'https://www.stechbd.net/ssl-certificate',
 					},
 					{
 						label: 'Server Information',
-						link: '/server-info',
+						link: 'https://www.stechbd.net/server-info',
 					},
 				],
 			},
@@ -180,39 +129,43 @@ const config: Config = {
 					},
 					{
 						label: 'Install Express 🎉',
-						link: '/product/Install-Express',
+						link: 'https://www.stechbd.net/product/Install-Express',
+					},
+					{
+						label: 'WP-Next 🎉',
+						link: 'https://www.stechbd.net/product/WP-Next',
 					},
 					{
 						label: 'CookieCons',
-						link: '/product/CookieCons',
+						link: 'https://www.stechbd.net/product/CookieCons',
 					},
 					{
 						label: 'ProjectPress',
-						link: '/product/ProjectPress',
+						link: 'https://www.stechbd.net/product/ProjectPress',
 					},
 					{
 						label: 'S PHP Engine',
-						link: '/product/S-PHP-Engine',
+						link: 'https://www.stechbd.net/product/S-PHP-Engine',
 					},
 					{
 						label: 'S Template Engine',
-						link: '/product/S-Template-Engine',
+						link: 'https://www.stechbd.net/product/S-Template-Engine',
 					},
 					{
 						label: 'S Database Explorer',
-						link: '/product/S-Database-Explorer',
+						link: 'https://www.stechbd.net/product/S-Database-Explorer',
 					},
 					{
 						label: 'S Number Manager',
-						link: '/product/S-Number-Manager',
+						link: 'https://www.stechbd.net/product/S-Number-Manager',
 					},
 					{
 						label: 'PyWeb',
-						link: '/product/PyWeb',
+						link: 'https://www.stechbd.net/product/PyWeb',
 					},
 					{
 						label: 'ViewMD',
-						link: '/product/ViewMD',
+						link: 'https://www.stechbd.net/product/ViewMD',
 					},
 				],
 			},
@@ -221,39 +174,39 @@ const config: Config = {
 				items: [
 					{
 						label: 'AI App Development 🎉',
-						link: '/ai-development',
+						link: 'https://www.stechbd.net/ai-development',
 					},
 					{
 						label: 'Web App Development',
-						link: '/web-development',
+						link: 'https://www.stechbd.net/web-development',
 					},
 					{
 						label: 'Readymade Website Development',
-						link: '/readymade-website',
+						link: 'https://www.stechbd.net/readymade-website',
 					},
 					{
 						label: 'School Management System',
-						link: '/school-management',
+						link: 'https://www.stechbd.net/school-management',
 					},
 					{
 						label: 'Android App Development',
-						link: '/android-development',
+						link: 'https://www.stechbd.net/android-development',
 					},
 					{
 						label: 'iOS App Development',
-						link: '/ios-development',
+						link: 'https://www.stechbd.net/ios-development',
 					},
 					{
 						label: 'Windows App Development',
-						link: '/windows-development',
+						link: 'https://www.stechbd.net/windows-development',
 					},
 					{
 						label: 'UI/UX Design',
-						link: '/ui-ux-development',
+						link: 'https://www.stechbd.net/ui-ux-development',
 					},
 					{
 						label: 'Search Engine Optimization',
-						link: '/seo',
+						link: 'https://www.stechbd.net/seo',
 					},
 				],
 			},
@@ -262,15 +215,15 @@ const config: Config = {
 				items: [
 					{
 						label: 'About S Technologies',
-						link: '/about',
+						link: 'https://www.stechbd.net/about',
 					},
 					{
 						label: 'Blog',
-						link: '/blog',
+						link: 'https://www.stechbd.net/blog',
 					},
 					{
 						label: 'Research and Development Wing',
-						link: '/rnd',
+						link: 'https://www.stechbd.net/rnd',
 					},
 					{
 						label: 'S Technologies AI',
@@ -282,7 +235,7 @@ const config: Config = {
 					},
 					{
 						label: 'Careers',
-						link: '/careers',
+						link: 'https://www.stechbd.net/careers',
 					},
 					{
 						label: 'GitHub',
@@ -290,37 +243,43 @@ const config: Config = {
 					},
 					{
 						label: 'Contact Us',
-						link: '/contact',
+						link: 'https://www.stechbd.net/contact',
 					},
 					{
 						label: 'Privacy Policy',
-						link: '/privacy',
+						link: 'https://www.stechbd.net/privacy',
 					},
 					{
 						label: 'Terms of Service',
-						link: '/terms',
+						link: 'https://www.stechbd.net/terms',
 					},
 					{
 						label: 'Disclaimer',
-						link: '/disclaimer',
+						link: 'https://www.stechbd.net/disclaimer',
 					},
 					{
 						label: 'Refund Policy',
-						link: '/refund',
+						link: 'https://www.stechbd.net/refund',
 					},
 					{
 						label: 'Sitemap',
-						link: '/sitemap',
+						link: 'https://www.stechbd.net/sitemap',
 					},
 				],
 			},
 		],
-		copyright: <>
-			© 2013-${ new Date().getFullYear().toString().slice(-2) } <strong><a href="https://www.stechbd.net"
-			                                                                     target="_blank">S
-			Technologies</a></strong>. Built with <strong><a href="https://www.stechbd.net/product/WP-Next"
-			                                                 target="_blank">WP-Next</a></strong>.
-		</>,
+		copyright: <span>
+			© 2013-{ new Date().getFullYear().toString().slice(-2) }&nbsp;<strong>
+			<a href="https://www.stechbd.net" target="_blank">S Technologies</a></strong>. Built with&nbsp;<strong>
+			<a href="https://www.stechbd.net/product/WP-Next" target="_blank">WP-Next</a></strong>.
+		</span>,
+		social: {
+			facebook: 'https://www.facebook.com/STechBD.Net',
+			x: 'https://www.twitter.com/STechBD_Net',
+			linkedin: 'https://www.linkedin.com/company/STechBD',
+			instagram: 'https://www.instagram.com/STechBD',
+			github: 'https://github.com/STechBD',
+		}
 	},
 }
 
