@@ -64,7 +64,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Installation
 
-1. Clone the repository: `git clone
+1. Clone the repository: `git clone github.com/STechBD/WP-Next.git`
 2. Install the dependencies: `npm install`
 3. Modify the configuration: `wp-next.config.js`
 4. Add .env file: `touch .env`
